@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康計算器 - Health Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>健康計算器 Health Calculator</h1>
+            <p>專業的身體健康指標計算工具</p>
+            <div class="creator-info">
+                <p>製作者：<span class="creator-name">運動醫學 吳易澄醫師</span></p>
+            </div>
+        </header>
+
+        <nav class="calculator-tabs">
+            <button class="tab-btn active" data-tab="bmi">BMI 計算</button>
+            <button class="tab-btn" data-tab="bmr">BMR 基礎代謝</button>
+            <button class="tab-btn" data-tab="tdee">TDEE 總消耗</button>
+            <button class="tab-btn" data-tab="bodyfat">體脂肪率</button>
+            <button class="tab-btn" data-tab="ffmi">FFMI 指數</button>
+            <button class="tab-btn" data-tab="questionnaire">健康問卷</button>
+        </nav>
+
+        <!-- BMI Calculator -->
+        <div class="calculator-section active" id="bmi">
+            <h2>BMI 身體質量指數計算</h2>
+            <div class="input-group">
+                <label for="height-bmi">身高 (cm)</label>
+                <input type="number" id="height-bmi" placeholder="例如：170">
+            </div>
+            <div class="input-group">
+                <label for="weight-bmi">體重 (kg)</label>
+                <input type="number" id="weight-bmi" placeholder="例如：65">
+            </div>
+            <div class="input-group">
+                <label for="standard">標準選擇</label>
+                <select id="standard">
+                    <option value="who">WHO 國際標準</option>
+                    <option value="asian">亞洲標準</option>
+                </select>
+            </div>
+            <button onclick="calculateBMI()">計算 BMI</button>
+            <div class="result" id="bmi-result"></div>
+            <div class="explanation" id="bmi-explanation">
+                <h3>BMI 身體質量指數詳細說明</h3>
+                <p><strong>計算公式：</strong>體重(kg) ÷ 身高²(m²)</p>
+                <p><strong>用途：</strong>BMI 是世界衛生組織推薦的評估成人體重狀況的標準指標，用來判斷是否有體重過輕、正常、過重或肥胖的風險。</p>
+                <p><strong>標準差異：</strong></p>
+                <ul>
+                    <li><strong>WHO 國際標準：</strong>適用於歐美人群，正常範圍 18.5-24.9</li>
+                    <li><strong>亞洲標準：</strong>考慮亞洲人體型特點，正常範圍調整為 18.5-22.9</li>
+                </ul>
+                <p><strong>限制性：</strong>BMI 無法區分肌肉和脂肪重量，肌肉發達的運動員可能會被誤判為過重。建議搭配體脂肪率等其他指標綜合評估。</p>
+                <p><strong>健康風險：</strong>BMI 過高與糖尿病、心血管疾病、高血壓等慢性病風險增加相關。</p>
+            </div>
+        </div>
+
+        <!-- BMR Calculator -->
+        <div class="calculator-section" id="bmr">
+            <h2>BMR 基礎代謝率計算</h2>
+            <div class="input-group">
+                <label>性別</label>
+                <div class="radio-group">
+                    <input type="radio" id="male-bmr" name="gender-bmr" value="male" checked>
+                    <label for="male-bmr">男性</label>
+                    <input type="radio" id="female-bmr" name="gender-bmr" value="female">
+                    <label for="female-bmr">女性</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="age-bmr">年齡</label>
+                <input type="number" id="age-bmr" placeholder="例如：25">
+            </div>
+            <div class="input-group">
+                <label for="height-bmr">身高 (cm)</label>
+                <input type="number" id="height-bmr" placeholder="例如：170">
+            </div>
+            <div class="input-group">
+                <label for="weight-bmr">體重 (kg)</label>
+                <input type="number" id="weight-bmr" placeholder="例如：65">
+            </div>
+            <div class="input-group">
+                <label for="formula">計算公式</label>
+                <select id="formula">
+                    <option value="mifflin">Mifflin-St Jeor 公式</option>
+                    <option value="harris">Harris-Benedict 公式</option>
+                </select>
+            </div>
+            <button onclick="calculateBMR()">計算 BMR</button>
+            <div class="result" id="bmr-result"></div>
+            <div class="explanation" id="bmr-explanation">
+                <h3>BMR 基礎代謝率詳細說明</h3>
+                <p><strong>定義：</strong>基礎代謝率（Basal Metabolic Rate）是指在完全安靜狀態下，維持生命所必需的最低能量消耗，包括呼吸、心跳、細胞代謝、蛋白質合成等基本生理功能。</p>
+                <p><strong>計算公式比較：</strong></p>
+                <ul>
+                    <li><strong>Mifflin-St Jeor 公式：</strong>1990年發表，被認為是目前最準確的BMR計算公式，適用於現代人群</li>
+                    <li><strong>Harris-Benedict 公式：</strong>1919年發表的經典公式，在某些情況下可能略高估BMR</li>
+                </ul>
+                <p><strong>影響因素：</strong>年齡、性別、體重、身高、肌肉量、甲狀腺功能、遺傳因素等都會影響BMR。</p>
+                <p><strong>年齡變化：</strong>BMR隨年齡增長而下降，每10年約下降2-3%，主要因肌肉量減少所致。</p>
+                <p><strong>實用價值：</strong>了解BMR有助於制定合理的減重或增重計畫，避免過度節食導致代謝率下降。</p>
+            </div>
+        </div>
+
+        <!-- TDEE Calculator -->
+        <div class="calculator-section" id="tdee">
+            <h2>TDEE 每日總消耗熱量計算</h2>
+            <div class="input-group">
+                <label>性別</label>
+                <div class="radio-group">
+                    <input type="radio" id="male-tdee" name="gender-tdee" value="male" checked>
+                    <label for="male-tdee">男性</label>
+                    <input type="radio" id="female-tdee" name="gender-tdee" value="female">
+                    <label for="female-tdee">女性</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="age-tdee">年齡</label>
+                <input type="number" id="age-tdee" placeholder="例如：25">
+            </div>
+            <div class="input-group">
+                <label for="height-tdee">身高 (cm)</label>
+                <input type="number" id="height-tdee" placeholder="例如：170">
+            </div>
+            <div class="input-group">
+                <label for="weight-tdee">體重 (kg)</label>
+                <input type="number" id="weight-tdee" placeholder="例如：65">
+            </div>
+            <div class="input-group">
+                <label for="activity">活動強度</label>
+                <select id="activity">
+                    <option value="1.2">久坐（幾乎沒有運動）</option>
+                    <option value="1.375">輕度活動（每週1-3次輕度運動）</option>
+                    <option value="1.55">中度活動（每週3-5次中度運動）</option>
+                    <option value="1.725">高強度活動（每週6-7次運動）</option>
+                    <option value="1.9">極高強度（體力勞動或每日2次運動）</option>
+                </select>
+            </div>
+            <button onclick="calculateTDEE()">計算 TDEE</button>
+            <div class="result" id="tdee-result"></div>
+            <div class="explanation" id="tdee-explanation">
+                <h3>TDEE 每日總消耗熱量詳細說明</h3>
+                <p><strong>定義：</strong>TDEE（Total Daily Energy Expenditure）是指一個人在24小時內消耗的總熱量，包括基礎代謝、食物熱效應、日常活動和運動消耗。</p>
+                <p><strong>組成部分：</strong></p>
+                <ul>
+                    <li><strong>基礎代謝率 (BMR)：</strong>約占總消耗的60-75%</li>
+                    <li><strong>食物熱效應 (TEF)：</strong>約占8-15%，消化吸收食物的能量消耗</li>
+                    <li><strong>日常活動 (NEAT)：</strong>約占15-30%，非運動性活動如走路、工作等</li>
+                    <li><strong>運動消耗 (EAT)：</strong>約占0-30%，有計劃的運動活動</li>
+                </ul>
+                <p><strong>活動係數說明：</strong></p>
+                <ul>
+                    <li><strong>1.2：</strong>久坐生活方式，很少或不運動</li>
+                    <li><strong>1.375：</strong>輕度活動，每週輕度運動1-3天</li>
+                    <li><strong>1.55：</strong>中度活動，每週中度運動3-5天</li>
+                    <li><strong>1.725：</strong>高強度活動，每週運動6-7天</li>
+                    <li><strong>1.9：</strong>極高強度，重體力勞動或每天兩次訓練</li>
+                </ul>
+                <p><strong>體重管理原理：</strong>當攝入熱量等於TDEE時維持體重；少於TDEE時減重；多於TDEE時增重。一般建議每日熱量赤字500大卡可達到每週減重0.5公斤的效果。</p>
+            </div>
+        </div>
+
+        <!-- Body Fat Calculator -->
+        <div class="calculator-section" id="bodyfat">
+            <h2>體脂肪率計算</h2>
+            <div class="input-group">
+                <label>性別</label>
+                <div class="radio-group">
+                    <input type="radio" id="male-bf" name="gender-bf" value="male" checked>
+                    <label for="male-bf">男性</label>
+                    <input type="radio" id="female-bf" name="gender-bf" value="female">
+                    <label for="female-bf">女性</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="method">計算方法</label>
+                <select id="method" onchange="toggleBodyFatInputs()">
+                    <option value="navy">US Navy 公式</option>
+                    <option value="ymca">YMCA 公式</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="height-bf">身高 (cm)</label>
+                <input type="number" id="height-bf" placeholder="例如：170">
+            </div>
+            <div class="input-group">
+                <label for="waist">腰圍 (cm)</label>
+                <input type="number" id="waist" placeholder="例如：80">
+            </div>
+            <div class="input-group" id="neck-group">
+                <label for="neck">頸圍 (cm)</label>
+                <input type="number" id="neck" placeholder="例如：35">
+            </div>
+            <div class="input-group" id="hip-group" style="display:none;">
+                <label for="hip">臀圍 (cm) - 女性</label>
+                <input type="number" id="hip" placeholder="例如：90">
+            </div>
+            <div class="input-group" id="weight-group-ymca" style="display:none;">
+                <label for="weight-bf">體重 (kg)</label>
+                <input type="number" id="weight-bf" placeholder="例如：65">
+            </div>
+            <button onclick="calculateBodyFat()">計算體脂肪率</button>
+            <div class="result" id="bodyfat-result"></div>
+            <div class="explanation" id="bodyfat-explanation">
+                <h3>體脂肪率詳細說明</h3>
+                <p><strong>定義：</strong>體脂肪率是指身體脂肪重量占總體重的百分比，是評估身體組成和健康狀況的重要指標，比BMI更能反映真實的身體組成。</p>
+                <p><strong>測量方法比較：</strong></p>
+                <ul>
+                    <li><strong>US Navy 公式：</strong>使用身高、腰圍、頸圍（女性加臀圍）進行計算，準確度較高，適用於一般人群</li>
+                    <li><strong>YMCA 公式：</strong>使用腰圍和體重進行簡化計算，操作簡單但準確度稍低</li>
+                </ul>
+                <p><strong>健康範圍（成人）：</strong></p>
+                <ul>
+                    <li><strong>男性：</strong>運動員 6-13%，健身愛好者 14-17%，一般健康 18-24%，超重 ≥25%</li>
+                    <li><strong>女性：</strong>運動員 14-20%，健身愛好者 21-24%，一般健康 25-31%，超重 ≥32%</li>
+                </ul>
+                <p><strong>生理功能：</strong>脂肪組織具有保溫、保護內臟、儲存能量、分泌激素等重要功能，過低或過高都會影響健康。</p>
+                <p><strong>性別差異：</strong>女性因生理需要，健康體脂肪率比男性高約8-10%，這與荷爾蒙分泌和生殖功能相關。</p>
+                <p><strong>注意事項：</strong>體脂肪率會受到年齡、基因、運動習慣等因素影響，建議定期監測變化趨勢而非單次數值。</p>
+            </div>
+        </div>
+
+        <!-- FFMI Calculator -->
+        <div class="calculator-section" id="ffmi">
+            <h2>FFMI 去脂體重指數計算</h2>
+            <div class="input-group">
+                <label for="height-ffmi">身高 (cm)</label>
+                <input type="number" id="height-ffmi" placeholder="例如：170">
+            </div>
+            <div class="input-group">
+                <label for="weight-ffmi">體重 (kg)</label>
+                <input type="number" id="weight-ffmi" placeholder="例如：65">
+            </div>
+            <div class="input-group">
+                <label for="bodyfat-ffmi">體脂肪率 (%)</label>
+                <input type="number" id="bodyfat-ffmi" placeholder="例如：15" step="0.1">
+            </div>
+            <button onclick="calculateFFMI()">計算 FFMI</button>
+            <div class="result" id="ffmi-result"></div>
+            <div class="explanation" id="ffmi-explanation">
+                <h3>FFMI 去脂體重指數詳細說明</h3>
+                <p><strong>定義：</strong>FFMI（Fat-Free Mass Index）是去脂體重指數，用來評估相對於身高的肌肉量，類似於BMI但排除了脂肪重量的影響，更能反映肌肉發達程度。</p>
+                <p><strong>計算公式：</strong>去脂體重(kg) ÷ 身高²(m²)，其中去脂體重 = 體重 × (1 - 體脂肪率%)</p>
+                <p><strong>標準化FFMI：</strong>為了消除身高對結果的影響，會進行標準化調整：FFMI + 6.1 × (1.8 - 身高(m))</p>
+                <p><strong>評估標準：</strong></p>
+                <ul>
+                    <li><strong>16以下：</strong>肌肉量不足，建議增加阻力訓練</li>
+                    <li><strong>16-18：</strong>一般水準，適合大多數非訓練人群</li>
+                    <li><strong>18-20：</strong>良好水準，顯示有規律運動習慣</li>
+                    <li><strong>20-22：</strong>優秀水準，接近天然訓練者上限</li>
+                    <li><strong>22-25：</strong>卓越水準，可能達到天然訓練極限</li>
+                    <li><strong>25以上：</strong>超出天然上限，需檢查測量準確性</li>
+                </ul>
+                <p><strong>自然訓練上限：</strong>研究顯示，在不使用合成代謝物質的情況下，大多數人的標準化FFMI上限約為25，這被稱為「自然訓練上限」。</p>
+                <p><strong>實用價值：</strong>FFMI可幫助健身愛好者評估訓練效果、設定合理目標，並判斷是否已接近個人肌肉增長潛力的上限。</p>
+                <p><strong>影響因素：</strong>基因、訓練年限、營養狀況、年齡、性別等都會影響FFMI上限。</p>
+            </div>
+        </div>
+
+        <!-- Questionnaire Section -->
+        <div class="calculator-section" id="questionnaire">
+            <h2>健康評估問卷</h2>
+            
+            <div class="questionnaire-tabs">
+                <button class="questionnaire-tab-btn active" data-questionnaire="sppb">SPPB 身體功能評估</button>
+                <button class="questionnaire-tab-btn" data-questionnaire="parq">PAR-Q+ 運動準備問卷</button>
+            </div>
+
+            <!-- SPPB Questionnaire -->
+            <div class="questionnaire-form active" id="sppb-form">
+                <h3>SPPB - 簡易身體功能測試</h3>
+                <p class="questionnaire-desc">Short Physical Performance Battery (SPPB) 是評估下肢功能、平衡能力和步行能力的標準化測試。</p>
+                
+                <div class="sppb-section">
+                    <h4>1. 平衡測試 (Balance Test)</h4>
+                    <p>請選擇您能維持10秒的最高難度姿勢：</p>
+                    <div class="radio-group-vertical">
+                        <label><input type="radio" name="balance" value="0">無法站立或需要支撐</label>
+                        <label><input type="radio" name="balance" value="1">能併腳站立但無法維持10秒</label>
+                        <label><input type="radio" name="balance" value="2">能併腳站立10秒但無法半串聯步態</label>
+                        <label><input type="radio" name="balance" value="3">能半串聯步態3-9.99秒</label>
+                        <label><input type="radio" name="balance" value="4">能半串聯步態或串聯步態10秒</label>
+                    </div>
+                </div>
+
+                <div class="sppb-section">
+                    <h4>2. 步行速度測試 (4-meter Walk Test)</h4>
+                    <p>以正常速度行走4公尺所需時間：</p>
+                    <div class="radio-group-vertical">
+                        <label><input type="radio" name="walktime" value="0">無法完成或需要輔助</label>
+                        <label><input type="radio" name="walktime" value="1">超過8.70秒</label>
+                        <label><input type="radio" name="walktime" value="2">6.21-8.70秒</label>
+                        <label><input type="radio" name="walktime" value="3">4.82-6.20秒</label>
+                        <label><input type="radio" name="walktime" value="4">少於4.82秒</label>
+                    </div>
+                </div>
+
+                <div class="sppb-section">
+                    <h4>3. 椅子起立測試 (Chair Stand Test)</h4>
+                    <p>從椅子起立5次所需時間（雙手抱胸不可用手支撐）：</p>
+                    <div class="radio-group-vertical">
+                        <label><input type="radio" name="chairstand" value="0">無法完成或需要支撐</label>
+                        <label><input type="radio" name="chairstand" value="1">超過16.70秒</label>
+                        <label><input type="radio" name="chairstand" value="2">13.70-16.69秒</label>
+                        <label><input type="radio" name="chairstand" value="3">11.20-13.69秒</label>
+                        <label><input type="radio" name="chairstand" value="4">少於11.19秒</label>
+                    </div>
+                </div>
+
+                <button onclick="calculateSPPB()">計算 SPPB 分數</button>
+                <div class="result" id="sppb-result"></div>
+            </div>
+
+            <!-- PAR-Q Questionnaire -->
+            <div class="questionnaire-form" id="parq-form">
+                <h3>PAR-Q+ - 運動準備問卷</h3>
+                <p class="questionnaire-desc">Physical Activity Readiness Questionnaire (PAR-Q+) 用於評估參與體育活動前的健康狀況和潛在風險。</p>
+                
+                <div class="parq-section">
+                    <h4>一般健康問題</h4>
+                    <div class="question-group">
+                        <p>1. 醫生是否曾告訴過您有心臟病，且只能在醫療監督下運動？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q1" value="yes">是</label>
+                            <label><input type="radio" name="q1" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>2. 您在休息或日常活動時是否會感到胸痛？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q2" value="yes">是</label>
+                            <label><input type="radio" name="q2" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>3. 您是否曾因頭暈而失去平衡或意識？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q3" value="yes">是</label>
+                            <label><input type="radio" name="q3" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>4. 醫生是否曾告訴過您血壓過高？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q4" value="yes">是</label>
+                            <label><input type="radio" name="q4" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>5. 醫生是否曾告訴過您有骨骼或關節問題，且運動可能使其惡化？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q5" value="yes">是</label>
+                            <label><input type="radio" name="q5" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>6. 您目前是否正在服用處方藥物治療心臟病或血壓？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q6" value="yes">是</label>
+                            <label><input type="radio" name="q6" value="no">否</label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>7. 您是否知道任何其他不應該進行體育活動的原因？</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q7" value="yes">是</label>
+                            <label><input type="radio" name="q7" value="no">否</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="calculatePARQ()">評估 PAR-Q+ 結果</button>
+                <div class="result" id="parq-result"></div>
+            </div>
+
+            <div class="explanation" id="questionnaire-explanation">
+                <h3>問卷說明</h3>
+                <div class="explanation-content">
+                    <h4>SPPB (簡易身體功能測試)</h4>
+                    <p><strong>用途：</strong>評估中老年人下肢功能、預測跌倒風險和功能衰退。</p>
+                    <p><strong>評分：</strong>總分0-12分，分數越高表示功能越好。</p>
+                    <ul>
+                        <li><strong>0-3分：</strong>嚴重功能限制，建議就醫評估</li>
+                        <li><strong>4-6分：</strong>中度功能限制，需要改善計畫</li>
+                        <li><strong>7-9分：</strong>輕度功能限制，持續運動</li>
+                        <li><strong>10-12分：</strong>功能良好，維持現況</li>
+                    </ul>
+                    
+                    <h4>PAR-Q+ (運動準備問卷)</h4>
+                    <p><strong>用途：</strong>篩選運動前的健康風險，確保安全參與體育活動。</p>
+                    <p><strong>評估：</strong>如有任何「是」的答案，建議諮詢醫療專業人員後再開始運動計畫。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="export-section">
+            <h3>結果匯出</h3>
+            <button onclick="exportToImage()" class="export-btn">匯出為圖片</button>
+        </div>
+
+        <footer>
+            <p>※ 本計算器僅供參考，具體健康狀況請諮詢專業醫療人員</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
