@@ -1,10 +1,3 @@
-// Usage counter functionality
-let usageCount = 0;
-
-function incrementCounter() {
-    usageCount++;
-    document.getElementById('counter-display').textContent = usageCount;
-}
 
 // Tab switching functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -146,8 +139,6 @@ function calculateBMI() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // BMR Calculator
@@ -196,8 +187,6 @@ function calculateBMR() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // TDEE Calculator
@@ -249,8 +238,6 @@ function calculateTDEE() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // Body Fat Calculator input visibility toggle
@@ -397,8 +384,6 @@ function calculateBodyFat() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // FFMI Calculator
@@ -463,8 +448,6 @@ function calculateFFMI() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 
@@ -822,8 +805,6 @@ function calculateSARCF() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // SPPB Calculator
@@ -923,8 +904,6 @@ function calculateSPPB() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
 
 // PAR-Q Calculator
@@ -1035,6 +1014,4 @@ function calculatePARQ() {
         </div>
     `;
     
-    // Increment usage counter
-    incrementCounter();
 }
