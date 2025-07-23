@@ -1,10 +1,27 @@
+// Usage counter functionality
+let usageCount = 0;
+
+function incrementCounter() {
+    usageCount++;
+    document.getElementById('counter-display').textContent = usageCount;
+}
+
 // Tab switching functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('健康計算機頁面載入完成');
+    
     const tabButtons = document.querySelectorAll('.tab-btn');
     const calculatorSections = document.querySelectorAll('.calculator-section');
+    
+    console.log('找到按鈕數量:', tabButtons.length);
+    console.log('找到section數量:', calculatorSections.length);
 
-    tabButtons.forEach(button => {
+    tabButtons.forEach((button, index) => {
+        console.log(`按鈕 ${index}:`, button.getAttribute('data-tab'));
+        
         button.addEventListener('click', function() {
+            console.log('按鈕被點擊:', this.getAttribute('data-tab'));
+            
             const tabId = this.getAttribute('data-tab');
             
             // Remove active class from all buttons and sections
@@ -13,12 +30,36 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add active class to clicked button and corresponding section
             this.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+            const targetSection = document.getElementById(tabId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                console.log('成功切換到:', tabId);
+            } else {
+                console.error('找不到section:', tabId);
+            }
         });
     });
 
     // Initialize body fat input visibility
     toggleBodyFatInputs();
+
+    // Initialize composition tab switching
+    const compositionTabButtons = document.querySelectorAll('.composition-tab-btn');
+    const compositionForms = document.querySelectorAll('.composition-form');
+
+    compositionTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const compositionId = this.getAttribute('data-composition');
+            
+            // Remove active class from all composition buttons and forms
+            compositionTabButtons.forEach(btn => btn.classList.remove('active'));
+            compositionForms.forEach(form => form.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding form
+            this.classList.add('active');
+            document.getElementById(compositionId + '-form').classList.add('active');
+        });
+    });
 
     // Initialize questionnaire tab switching
     const questionnaireTabButtons = document.querySelectorAll('.questionnaire-tab-btn');
@@ -65,7 +106,7 @@ function calculateBMI() {
             categoryClass = 'bmi-normal';
             advice = '維持現有的健康生活方式';
         } else if (bmi < 30) {
-            category = '體重過重';
+            category = '過重';
             categoryClass = 'bmi-overweight';
             advice = '建議控制飲食，增加有氧運動';
         } else {
@@ -104,6 +145,9 @@ function calculateBMI() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // BMR Calculator
@@ -151,6 +195,9 @@ function calculateBMR() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // TDEE Calculator
@@ -201,6 +248,9 @@ function calculateTDEE() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // Body Fat Calculator input visibility toggle
@@ -346,6 +396,9 @@ function calculateBodyFat() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // FFMI Calculator
@@ -409,6 +462,9 @@ function calculateFFMI() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 
@@ -677,7 +733,7 @@ function exportToImage() {
         }).catch(error => {
             console.error('html2canvas 錯誤:', error);
             alert('圖片生成失敗，請稍後再試');
-            // Remove temporary element
+            // Remove temporary element on error
             if (document.body.contains(summaryDiv)) {
                 document.body.removeChild(summaryDiv);
             }
@@ -689,6 +745,85 @@ function exportToImage() {
             document.body.removeChild(summaryDiv);
         }
     }
+}
+
+// SARC-F Calculator
+function calculateSARCF() {
+    const questions = ['sarcf-q1', 'sarcf-q2', 'sarcf-q3', 'sarcf-q4', 'sarcf-q5'];
+    const answers = {};
+    let allAnswered = true;
+    let totalScore = 0;
+
+    // Check if all questions are answered
+    questions.forEach(question => {
+        const answer = document.querySelector(`input[name="${question}"]:checked`);
+        if (!answer) {
+            allAnswered = false;
+        } else {
+            answers[question] = parseInt(answer.value);
+            totalScore += parseInt(answer.value);
+        }
+    });
+
+    if (!allAnswered) {
+        document.getElementById('sarcf-result').innerHTML = '<p class="warning">請回答所有問題</p>';
+        return;
+    }
+
+    let riskLevel, riskClass, interpretation, recommendations;
+
+    if (totalScore >= 4) {
+        riskLevel = '肌少症篩檢陽性';
+        riskClass = 'risk-high';
+        interpretation = '您的 SARC-F 分數顯示可能有肌少症風險';
+        recommendations = [
+            '建議盡快諮詢醫師或復健科專科醫師',
+            '進行進一步的肌少症診斷檢查（肌肉質量、肌力、身體功能評估）',
+            '開始或加強阻力訓練和蛋白質攝取',
+            '考慮營養諮詢以優化蛋白質和營養素攝取'
+        ];
+    } else {
+        riskLevel = '肌少症篩檢陰性';
+        riskClass = 'risk-low';
+        interpretation = '您的 SARC-F 分數在正常範圍內';
+        recommendations = [
+            '維持規律的運動習慣，特別是阻力訓練',
+            '確保足夠的蛋白質攝取（每公斤體重1.2-1.6克）',
+            '定期進行肌少症篩檢，特別是60歲以上',
+            '保持健康的生活方式和均衡飲食'
+        ];
+    }
+
+    const detailBreakdown = `
+        <div class="score-breakdown">
+            <h4>各項目得分明細：</h4>
+            <p>1. 握力：${answers['sarcf-q1']} 分</p>
+            <p>2. 輔助行走：${answers['sarcf-q2']} 分</p>
+            <p>3. 起身：${answers['sarcf-q3']} 分</p>
+            <p>4. 爬樓梯：${answers['sarcf-q4']} 分</p>
+            <p>5. 跌倒：${answers['sarcf-q5']} 分</p>
+        </div>
+    `;
+
+    document.getElementById('sarcf-result').innerHTML = `
+        <div class="metric-card">
+            <div class="metric-label">SARC-F 總分</div>
+            <div class="metric-value">${totalScore}</div>
+            <p class="${riskClass}">篩檢結果：${riskLevel}</p>
+            <div class="health-tip">
+                <h4>評估說明</h4>
+                <p>${interpretation}</p>
+                <h4>建議事項</h4>
+                <ul>
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+                ${detailBreakdown}
+            </div>
+        </div>
+    `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // SPPB Calculator
@@ -787,6 +922,9 @@ function calculateSPPB() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
 
 // PAR-Q Calculator
@@ -896,4 +1034,7 @@ function calculatePARQ() {
             </div>
         </div>
     `;
+    
+    // Increment usage counter
+    incrementCounter();
 }
