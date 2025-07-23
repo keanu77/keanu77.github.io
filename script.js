@@ -73,16 +73,16 @@ function calculateBMI() {
             categoryClass = 'bmi-obese';
             advice = '建議諮詢營養師或醫師，制定減重計畫';
         }
-    } else { // Asian standard
+    } else { // Taiwan standard
         if (bmi < 18.5) {
             category = '體重過輕';
             categoryClass = 'bmi-underweight';
             advice = '建議增加營養攝取，適度運動增加肌肉量';
-        } else if (bmi < 23) {
-            category = '正常範圍';
+        } else if (bmi < 24) {
+            category = '健康體重';
             categoryClass = 'bmi-normal';
             advice = '維持現有的健康生活方式';
-        } else if (bmi < 25) {
+        } else if (bmi < 27) {
             category = '體重過重';
             categoryClass = 'bmi-overweight';
             advice = '建議控制飲食，增加有氧運動';
