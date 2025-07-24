@@ -56,15 +56,39 @@
                 <div class="result" id="bmi-result"></div>
                 <div class="explanation" id="bmi-explanation">
                     <h4>BMI 身體質量指數詳細說明</h4>
-                    <p><strong>計算公式：</strong>體重(kg) ÷ 身高²(m²)</p>
-                    <p><strong>用途：</strong>BMI 是世界衛生組織推薦的評估成人體重狀況的標準指標，用來判斷是否有體重過輕、正常、過重或肥胖的風險。</p>
-                    <p><strong>標準差異：</strong></p>
+                    <p><strong>計算公式</strong>體重(kg) ÷ 身高²(m²)</p>
+                    <p><strong>用途</strong>BMI 是世界衛生組織推薦的評估成人體重狀況的標準指標，用來判斷是否有體重過輕、正常、過重或肥胖的風險</p>
+                    
+                    <p><strong>國民健康署成人BMI分類標準</strong></p>
                     <ul>
-                        <li><strong>WHO 國際標準：</strong>體重過輕 <18.5，正常範圍 18.5-24.9，過重 25-29.9，肥胖 ≥30</li>
-                        <li><strong>台灣標準：</strong>依據國民健康署建議，健康體重範圍為 18.5-23.9，體重過重 24-26.9，肥胖 ≥27</li>
+                        <li><strong>體重過輕</strong>BMI < 18.5</li>
+                        <li><strong>健康體重</strong>18.5 ≤ BMI < 24.0</li>
+                        <li><strong>體重過重</strong>24.0 ≤ BMI < 27.0</li>
+                        <li><strong>輕度肥胖</strong>27.0 ≤ BMI < 30.0</li>
+                        <li><strong>中度肥胖</strong>30.0 ≤ BMI < 35.0</li>
+                        <li><strong>重度肥胖</strong>BMI ≥ 35.0</li>
                     </ul>
-                    <p><strong>限制性：</strong>BMI 無法區分肌肉和脂肪重量，肌肉發達的運動員可能會被誤判為過重。建議搭配體脂肪率等其他指標綜合評估。</p>
-                    <p><strong>健康風險：</strong>BMI 過高與糖尿病、心血管疾病、高血壓等慢性病風險增加相關。</p>
+                    
+                    <p><strong>WHO 國際標準</strong></p>
+                    <ul>
+                        <li><strong>體重過輕</strong>BMI < 18.5</li>
+                        <li><strong>正常範圍</strong>18.5 ≤ BMI < 25.0</li>
+                        <li><strong>過重</strong>25.0 ≤ BMI < 30.0</li>
+                        <li><strong>肥胖</strong>BMI ≥ 30.0</li>
+                    </ul>
+                    
+                    <p><strong>健康風險</strong></p>
+                    <ul>
+                        <li><strong>體重過重或肥胖(BMI≥24)</strong>增加糖尿病、心血管疾病、惡性腫瘤的風險</li>
+                        <li><strong>體重過輕</strong>可能導致營養不良、骨質疏鬆症、猝死等健康問題</li>
+                        <li>世界衛生組織指出，肥胖者相較於健康體重者，罹患糖尿病、代謝症候群、血脂異常的相對危險性超過3倍</li>
+                    </ul>
+                    
+                    <p><strong>腰圍標準</strong>即使BMI在正常範圍內，男性腰圍超過90公分、女性腰圍超過80公分，表示腰腹部脂肪堆積過多，仍有健康風險</p>
+                    
+                    <p><strong>限制性</strong>BMI 無法區分肌肉和脂肪重量，肌肉發達的運動員可能會被誤判為過重。建議搭配體脂肪率、腰圍等其他指標綜合評估</p>
+                    
+                    <p><em>資料來源：衛生福利部國民健康署</em></p>
                 </div>
             </div>
 
@@ -103,16 +127,42 @@
                 <div class="result" id="bmr-result"></div>
                 <div class="explanation" id="bmr-explanation">
                     <h4>BMR 基礎代謝率詳細說明</h4>
-                    <p><strong>定義：</strong>基礎代謝率是指身體在完全休息，不進行任何活動狀態下維持基本生理功能所需要的能量。</p>
-                    <p><strong>Mifflin-St Jeor 公式：</strong>目前最被廣泛採用且準確性較高的公式</p>
+                    <p><strong>定義</strong>基礎代謝率(Basal Metabolic Rate, BMR)是指身體在完全休息狀態下，維持基本生理功能所需要的最低能量消耗，包括呼吸、心跳、細胞代謝、器官功能等</p>
+                    
+                    <p><strong>計算公式</strong></p>
+                    <p><strong>Mifflin-St Jeor 公式</strong>目前最被廣泛採用且準確性較高的公式</p>
                     <ul>
                         <li>男性：BMR = 10 × 體重(kg) + 6.25 × 身高(cm) - 5 × 年齡 + 5</li>
                         <li>女性：BMR = 10 × 體重(kg) + 6.25 × 身高(cm) - 5 × 年齡 - 161</li>
                     </ul>
-                    <p><strong>Harris-Benedict 公式：</strong>傳統經典公式</p>
+                    <p><strong>Harris-Benedict 公式</strong>傳統經典公式</p>
                     <ul>
                         <li>男性：BMR = 88.362 + (13.397 × 體重) + (4.799 × 身高) - (5.677 × 年齡)</li>
                         <li>女性：BMR = 447.593 + (9.247 × 體重) + (3.098 × 身高) - (4.330 × 年齡)</li>
+                    </ul>
+                    
+                    <p><strong>BMR的重要性</strong></p>
+                    <ul>
+                        <li><strong>體重管理基礎</strong>BMR約佔每日總熱量消耗的60-75%，是制定飲食計畫的重要參考</li>
+                        <li><strong>營養規劃</strong>確保每日熱量攝取不低於BMR，避免代謝率下降</li>
+                        <li><strong>運動計畫</strong>結合BMR與活動量，計算個人化的熱量需求</li>
+                    </ul>
+                    
+                    <p><strong>影響BMR的因素</strong></p>
+                    <ul>
+                        <li><strong>年齡</strong>隨年齡增長，BMR逐漸下降（每10年約降低2-3%）</li>
+                        <li><strong>性別</strong>男性BMR通常比女性高，因肌肉量較多</li>
+                        <li><strong>身體組成</strong>肌肉組織比脂肪組織消耗更多能量</li>
+                        <li><strong>遺傳因素</strong>個體間BMR可相差達15-20%</li>
+                        <li><strong>環境溫度</strong>極冷或極熱環境會增加BMR</li>
+                    </ul>
+                    
+                    <p><strong>健康建議</strong></p>
+                    <ul>
+                        <li>維持規律運動習慣，特別是肌力訓練，有助於維持較高的BMR</li>
+                        <li>避免極低熱量飲食，以免造成代謝率下降</li>
+                        <li>充足睡眠和適當的壓力管理有助於維持正常代謝</li>
+                        <li>隨著年齡增長，適度調整飲食和運動計畫</li>
                     </ul>
                 </div>
             </div>
@@ -155,16 +205,49 @@
                 <div class="result" id="tdee-result"></div>
                 <div class="explanation" id="tdee-explanation">
                     <h4>TDEE 每日總消耗熱量詳細說明</h4>
-                    <p><strong>定義：</strong>TDEE 是指一個人在一天內所有活動的總熱量消耗，包括基礎代謝率、活動消耗和食物熱效應。</p>
-                    <p><strong>計算方式：</strong>TDEE = BMR × 活動係數</p>
-                    <p><strong>活動係數說明：</strong></p>
+                    <p><strong>定義</strong>TDEE (Total Daily Energy Expenditure) 是指一個人在一天內所有活動的總熱量消耗，包括基礎代謝率、活動消耗、食物熱效應(產熱效應)和適應性產熱</p>
+                    
+                    <p><strong>TDEE組成要素</strong></p>
                     <ul>
-                        <li><strong>1.2：</strong>久坐生活方式，幾乎沒有運動</li>
-                        <li><strong>1.375：</strong>輕度活動，每週1-3次輕度運動</li>
-                        <li><strong>1.55：</strong>中度活動，每週3-5次中度運動</li>
-                        <li><strong>1.725：</strong>高強度活動，每週6-7次運動</li>
-                        <li><strong>1.9：</strong>極高強度，體力勞動或每日2次運動</li>
+                        <li><strong>基礎代謝率(BMR)</strong>約佔60-75%，維持基本生理功能所需能量</li>
+                        <li><strong>身體活動消耗</strong>約佔15-25%，包括運動和日常活動</li>
+                        <li><strong>食物熱效應(TEF)</strong>約佔8-15%，消化代謝食物所需能量</li>
+                        <li><strong>適應性產熱</strong>約佔2-5%，環境適應和非運動性熱產生</li>
                     </ul>
+                    
+                    <p><strong>計算方式</strong>TDEE = BMR × 活動係數</p>
+                    <p><strong>活動係數詳細說明</strong></p>
+                    <ul>
+                        <li><strong>1.2 (久坐生活)</strong>辦公室工作，幾乎沒有運動，大部分時間坐著或躺著</li>
+                        <li><strong>1.375 (輕度活動)</strong>每週1-3次輕度運動，或每日輕量家務活動</li>
+                        <li><strong>1.55 (中度活動)</strong>每週3-5次中度運動，或每日有一定量的身體活動</li>
+                        <li><strong>1.725 (高強度活動)</strong>每週6-7次運動，或從事體力勞動工作</li>
+                        <li><strong>1.9 (極高強度)</strong>每日重度體力勞動或每日2次高強度運動</li>
+                    </ul>
+                    
+                    <p><strong>國民健康署熱量建議</strong></p>
+                    <ul>
+                        <li><strong>輕度工作者</strong>20-25 大卡 × 體重(kg)</li>
+                        <li><strong>中度工作者</strong>30-35 大卡 × 體重(kg)</li>
+                        <li><strong>重度工作者</strong>35-45 大卡 × 體重(kg)</li>
+                    </ul>
+                    
+                    <p><strong>體重管理應用</strong></p>
+                    <ul>
+                        <li><strong>維持體重</strong>每日熱量攝取 = TDEE</li>
+                        <li><strong>健康減重</strong>每日攝取比TDEE少300-500大卡，每週減重0.5公斤</li>
+                        <li><strong>增重</strong>每日攝取比TDEE多300-500大卡，每週增重0.5公斤</li>
+                        <li><strong>重要提醒</strong>每日熱量攝取不應低於1200大卡，避免營養不良</li>
+                    </ul>
+                    
+                    <p><strong>個人化調整建議</strong></p>
+                    <ul>
+                        <li>初期使用TDEE作為基準，觀察2-3週體重變化</li>
+                        <li>根據實際體重變化調整熱量攝取(每週調整100-200大卡)</li>
+                        <li>配合均衡飲食和規律運動，達到健康的體重管理目標</li>
+                    </ul>
+                    
+                    <p><em>資料來源：衛生福利部國民健康署、運動營養學指引</em></p>
                 </div>
             </div>
 
@@ -172,38 +255,23 @@
             <div class="composition-form" id="bodyfat-form">
                 <h3>體脂肪率計算</h3>
                 <div class="input-group">
-                    <label for="method">計算方法</label>
-                    <select id="method" onchange="toggleBodyFatInputs()">
-                        <option value="us-navy">美國海軍公式</option>
-                        <option value="ymca">YMCA 公式</option>
-                    </select>
-                </div>
-                <div class="input-group">
                     <label>性別</label>
                     <div class="radio-group">
-                        <input type="radio" id="male-bf" name="gender-bf" value="male" checked onchange="toggleBodyFatInputs()">
+                        <input type="radio" id="male-bf" name="gender-bf" value="male" checked>
                         <label for="male-bf">男性</label>
-                        <input type="radio" id="female-bf" name="gender-bf" value="female" onchange="toggleBodyFatInputs()">
+                        <input type="radio" id="female-bf" name="gender-bf" value="female">
                         <label for="female-bf">女性</label>
                     </div>
+                </div>
+                <div class="input-group">
+                    <label for="age-bf">年齡</label>
+                    <input type="number" id="age-bf" placeholder="例如：25">
                 </div>
                 <div class="input-group">
                     <label for="height-bf">身高 (cm)</label>
                     <input type="number" id="height-bf" placeholder="例如：170">
                 </div>
-                <div class="input-group" id="neck-group">
-                    <label for="neck">頸圍 (cm)</label>
-                    <input type="number" id="neck" placeholder="例如：36">
-                </div>
                 <div class="input-group">
-                    <label for="waist">腰圍 (cm)</label>
-                    <input type="number" id="waist" placeholder="例如：80">
-                </div>
-                <div class="input-group" id="hip-group">
-                    <label for="hip">臀圍 (cm)</label>
-                    <input type="number" id="hip" placeholder="例如：95">
-                </div>
-                <div class="input-group" id="weight-group-ymca" style="display: none;">
                     <label for="weight-bf">體重 (kg)</label>
                     <input type="number" id="weight-bf" placeholder="例如：65">
                 </div>
@@ -211,13 +279,60 @@
                 <div class="result" id="bodyfat-result"></div>
                 <div class="explanation" id="bodyfat-explanation">
                     <h4>體脂肪率詳細說明</h4>
-                    <p><strong>定義：</strong>體脂肪率是指身體脂肪重量佔總體重的百分比，是評估身體組成的重要指標。</p>
-                    <p><strong>美國海軍公式：</strong>使用身高、頸圍、腰圍（女性加臀圍）進行計算</p>
-                    <p><strong>YMCA 公式：</strong>使用腰圍與體重的比例進行估算</p>
-                    <p><strong>健康範圍：</strong></p>
+                    <p><strong>定義</strong>體脂肪率是指身體脂肪重量佔總體重的百分比，是評估身體組成和健康狀況的重要指標。體脂肪包括必需脂肪(維持生理功能)和儲存脂肪(能量儲存)</p>
+                    
+                    <p><strong>計算公式</strong>基於BMI和年齡的研究公式</p>
                     <ul>
-                        <li><strong>男性：</strong>運動員6-13%，健身14-17%，一般18-25%，過高≥26%</li>
-                        <li><strong>女性：</strong>運動員16-20%，健身21-24%，一般25-31%，過高≥32%</li>
+                        <li><strong>男性</strong>體脂率 = 1.2 × BMI + 0.23 × 年齡 - 16.2</li>
+                        <li><strong>女性</strong>體脂率 = 1.2 × BMI + 0.23 × 年齡 - 5.4</li>
+                    </ul>
+                    
+                    <p><strong>健康體脂率範圍</strong></p>
+                    <p><strong>男性標準</strong></p>
+                    <ul>
+                        <li><strong>必需脂肪</strong>2-5% (維持基本生理功能)</li>
+                        <li><strong>運動員等級</strong>6-13% (高水準運動表現)</li>
+                        <li><strong>健身等級</strong>14-17% (優良體態)</li>
+                        <li><strong>一般健康</strong>18-25% (健康範圍)</li>
+                        <li><strong>過高風險</strong>≥26% (增加慢性病風險)</li>
+                    </ul>
+                    
+                    <p><strong>女性標準</strong></p>
+                    <ul>
+                        <li><strong>必需脂肪</strong>10-13% (維持基本生理功能，包括生殖功能)</li>
+                        <li><strong>運動員等級</strong>14-20% (高水準運動表現)</li>
+                        <li><strong>健身等級</strong>21-24% (優良體態)</li>
+                        <li><strong>一般健康</strong>25-31% (健康範圍)</li>
+                        <li><strong>過高風險</strong>≥32% (增加慢性病風險)</li>
+                    </ul>
+                    
+                    <p><strong>年齡因素影響</strong></p>
+                    <ul>
+                        <li><strong>20-39歲</strong>體脂率標準較嚴格，代謝率較高</li>
+                        <li><strong>40-59歲</strong>隨年齡增長，可接受略高的體脂率</li>
+                        <li><strong>60歲以上</strong>適度的體脂肪有助於維持健康和骨密度</li>
+                    </ul>
+                    
+                    <p><strong>健康風險評估</strong></p>
+                    <ul>
+                        <li><strong>體脂率過低</strong>可能導致荷爾蒙失調、免疫力下降、骨質疏鬆</li>
+                        <li><strong>體脂率過高</strong>增加糖尿病、心血管疾病、代謝症候群風險</li>
+                        <li><strong>內臟脂肪</strong>腹部脂肪堆積比皮下脂肪對健康威脅更大</li>
+                    </ul>
+                    
+                    <p><strong>改善建議</strong></p>
+                    <ul>
+                        <li><strong>有氧運動</strong>每週150分鐘中等強度運動，有效燃燒脂肪</li>
+                        <li><strong>肌力訓練</strong>增加肌肉量，提高基礎代謝率</li>
+                        <li><strong>均衡飲食</strong>控制熱量攝取，增加蛋白質比例</li>
+                        <li><strong>充足睡眠</strong>7-9小時優質睡眠，調節代謝荷爾蒙</li>
+                    </ul>
+                    
+                    <p><strong>注意事項</strong></p>
+                    <ul>
+                        <li>本公式為估算值，實際體脂率建議搭配專業測量設備(如DEXA、生物電阻抗等)</li>
+                        <li>孕婦、哺乳期婦女、成長期青少年不適用一般成人標準</li>
+                        <li>運動員和健身愛好者應考慮肌肉量因素，避免單純追求低體脂率</li>
                     </ul>
                 </div>
             </div>
@@ -241,21 +356,71 @@
                 <div class="result" id="ffmi-result"></div>
                 <div class="explanation" id="ffmi-explanation">
                     <h4>FFMI 去脂體重指數詳細說明</h4>
-                    <p><strong>定義：</strong>FFMI (Fat-Free Mass Index) 是去脂體重指數，用來評估相對於身高的肌肉量。</p>
-                    <p><strong>計算公式：</strong></p>
+                    <p><strong>定義</strong>FFMI (Fat-Free Mass Index) 是去脂體重指數，用來評估相對於身高的肌肉量和瘦體組織含量。與BMI不同，FFMI能更準確反映身體的肌肉發達程度，不受體脂肪影響</p>
+                    
+                    <p><strong>計算公式</strong></p>
                     <ul>
-                        <li>去脂體重 = 體重 × (1 - 體脂肪率/100)</li>
-                        <li>FFMI = 去脂體重(kg) ÷ 身高²(m²)</li>
-                        <li>標準化FFMI = FFMI + 6.1 × (1.8 - 身高(m))</li>
+                        <li><strong>去脂體重(FFM)</strong>體重(kg) × (1 - 體脂肪率/100)</li>
+                        <li><strong>FFMI</strong>去脂體重(kg) ÷ 身高²(m²)</li>
+                        <li><strong>標準化FFMI</strong>FFMI + 6.1 × (1.8 - 身高(m)) [調整身高差異]</li>
                     </ul>
-                    <p><strong>評估標準：</strong></p>
+                    
+                    <p><strong>男性FFMI評估標準</strong></p>
                     <ul>
-                        <li><strong>16以下：</strong>肌肉量不足</li>
-                        <li><strong>16-18：</strong>一般水準</li>
-                        <li><strong>18-20：</strong>良好水準</li>
-                        <li><strong>20-22：</strong>優秀水準</li>
-                        <li><strong>22-25：</strong>精英水準</li>
-                        <li><strong>25以上：</strong>可能超出自然訓練上限</li>
+                        <li><strong>16以下</strong>肌肉量明顯不足，建議增加肌力訓練</li>
+                        <li><strong>16-18</strong>一般水準，適合大部分久坐上班族</li>
+                        <li><strong>18-20</strong>良好水準，規律運動者的典型範圍</li>
+                        <li><strong>20-22</strong>優秀水準，健身愛好者或運動員等級</li>
+                        <li><strong>22-25</strong>卓越水準，高水準運動員或健美選手</li>
+                        <li><strong>25以上</strong>可能超出自然訓練上限，需檢視訓練與營養</li>
+                    </ul>
+                    
+                    <p><strong>女性FFMI評估標準</strong></p>
+                    <ul>
+                        <li><strong>14以下</strong>肌肉量明顯不足</li>
+                        <li><strong>14-16</strong>一般水準</li>
+                        <li><strong>16-18</strong>良好水準</li>
+                        <li><strong>18-20</strong>優秀水準</li>
+                        <li><strong>20-22</strong>卓越水準</li>
+                        <li><strong>22以上</strong>極高水準</li>
+                    </ul>
+                    
+                    <p><strong>FFMI的重要性</strong></p>
+                    <ul>
+                        <li><strong>肌少症預防</strong>隨年齡增長，維持足夠的肌肉量對健康至關重要</li>
+                        <li><strong>代謝健康</strong>肌肉量直接影響基礎代謝率和胰島素敏感性</li>
+                        <li><strong>功能性體能</strong>充足的肌肉量維持日常活動能力和生活品質</li>
+                        <li><strong>骨骼健康</strong>肌肉對骨骼的牽拉有助於維持骨密度</li>
+                    </ul>
+                    
+                    <p><strong>年齡相關考量</strong></p>
+                    <ul>
+                        <li><strong>20-30歲</strong>肌肉量達到顛峰期，FFMI相對較高</li>
+                        <li><strong>30-50歲</strong>每10年約流失3-8%肌肉量，需積極維持</li>
+                        <li><strong>50歲以上</strong>肌肉量流失加速，預防肌少症尤為重要</li>
+                    </ul>
+                    
+                    <p><strong>改善FFMI的建議</strong></p>
+                    <ul>
+                        <li><strong>阻力訓練</strong>每週2-3次全身性肌力訓練，漸進式超負荷</li>
+                        <li><strong>蛋白質攝取</strong>每公斤體重1.6-2.2克優質蛋白質</li>
+                        <li><strong>充足休息</strong>肌肉修復和生長需要充足的睡眠和恢復時間</li>
+                        <li><strong>均衡營養</strong>碳水化合物提供訓練能量，健康脂肪支持荷爾蒙製造</li>
+                    </ul>
+                    
+                    <p><strong>限制與注意事項</strong></p>
+                    <ul>
+                        <li>FFMI需要準確的體脂肪率測量，建議使用專業設備</li>
+                        <li>遺傳因素影響個體肌肉發展潛力，不應過度比較</li>
+                        <li>25以上的FFMI在自然訓練者中極為罕見，可能需要專業評估</li>
+                        <li>女性由於荷爾蒙差異，FFMI標準應相應調整</li>
+                    </ul>
+                    
+                    <p><strong>與其他指標的關係</strong></p>
+                    <ul>
+                        <li><strong>BMI vs FFMI</strong>BMI無法區分肌肉和脂肪，FFMI專注於瘦體組織</li>
+                        <li><strong>體脂率</strong>FFMI高且體脂率適中，表示理想的身體組成</li>
+                        <li><strong>健康評估</strong>建議同時參考BMI、體脂率和FFMI進行綜合評估</li>
                     </ul>
                 </div>
             </div>
@@ -274,7 +439,7 @@
             <!-- SPPB Questionnaire -->
             <div class="questionnaire-form active" id="sppb-form">
                 <h3>SPPB - 簡易身體功能測試</h3>
-                <p class="questionnaire-desc">Short Physical Performance Battery (SPPB) 是評估下肢功能、平衡能力和步行能力的標準化測試。</p>
+                <p class="questionnaire-desc">Short Physical Performance Battery (SPPB) 是評估下肢功能、平衡能力和步行能力的標準化測試</p>
                 
                 <div class="sppb-section">
                     <h4>平衡測試</h4>
@@ -317,25 +482,25 @@
 
                 <div class="info-section">
                     <h4>SPPB 簡易身體功能測試說明</h4>
-                    <p><strong>用途：</strong>評估老年人下肢功能和跌倒風險，預測未來功能衰退和住院風險。</p>
-                    <p><strong>評分：</strong>總分0-12分，分數越高表示身體功能越好。</p>
+                    <p><strong>用途</strong>評估老年人下肢功能和跌倒風險，預測未來功能衰退和住院風險</p>
+                    <p><strong>評分</strong>總分0-12分，分數越高表示身體功能越好</p>
                     <ul>
-                        <li><strong>0-3分：</strong>嚴重功能限制，高跌倒風險</li>
-                        <li><strong>4-6分：</strong>中度功能限制，需要介入</li>
-                        <li><strong>7-9分：</strong>輕度功能限制，持續運動</li>
-                        <li><strong>10-12分：</strong>功能良好，維持現況</li>
+                        <li><strong>0-3分</strong>嚴重功能限制，高跌倒風險</li>
+                        <li><strong>4-6分</strong>中度功能限制，需要介入</li>
+                        <li><strong>7-9分</strong>輕度功能限制，持續運動</li>
+                        <li><strong>10-12分</strong>功能良好，維持現況</li>
                     </ul>
                     
                     <h4>PAR-Q+ (運動準備問卷)</h4>
-                    <p><strong>用途：</strong>篩選運動前的健康風險，確保安全參與體育活動。</p>
-                    <p><strong>評估：</strong>如有任何「是」的答案，建議諮詢醫療專業人員後再開始運動計畫。</p>
+                    <p><strong>用途</strong>篩選運動前的健康風險，確保安全參與體育活動</p>
+                    <p><strong>評估</strong>如有任何「是」的答案，建議諮詢醫療專業人員後再開始運動計畫</p>
                 </div>
             </div>
 
             <!-- PAR-Q Questionnaire -->
             <div class="questionnaire-form" id="parq-form">
                 <h3>PAR-Q+ - 運動準備問卷</h3>
-                <p class="questionnaire-desc">Physical Activity Readiness Questionnaire (PAR-Q+) 用於評估參與體育活動前的健康狀況和潛在風險。</p>
+                <p class="questionnaire-desc">Physical Activity Readiness Questionnaire (PAR-Q+) 用於評估參與體育活動前的健康狀況和潛在風險</p>
                 
                 <div class="parq-section">
                     <h4>一般健康問題</h4>
@@ -401,11 +566,11 @@
 
                 <div class="info-section">
                     <h4>PAR-Q+ 運動準備問卷說明</h4>
-                    <p><strong>用途：</strong>識別在開始運動計畫前可能需要醫療諮詢的個人。</p>
-                    <p><strong>評估標準：</strong></p>
+                    <p><strong>用途</strong>識別在開始運動計畫前可能需要醫療諮詢的個人</p>
+                    <p><strong>評估標準</strong></p>
                     <ul>
-                        <li><strong>全部回答「否」：</strong>您可以安全地開始運動計畫</li>
-                        <li><strong>任何回答「是」：</strong>建議先諮詢醫療專業人員</li>
+                        <li><strong>全部回答「否」</strong>您可以安全地開始運動計畫</li>
+                        <li><strong>任何回答「是」</strong>建議先諮詢醫療專業人員</li>
                     </ul>
                 </div>
             </div>
@@ -413,10 +578,10 @@
             <!-- SARC-F Questionnaire -->
             <div class="questionnaire-form" id="sarcf-form">
                 <h3>SARC-F - 肌少症功能篩檢問卷</h3>
-                <p class="questionnaire-desc">SARC-F (Sarcopenia Functional Questionnaire) 是一種簡便且有效的肌少症篩檢工具，透過評估日常生活功能來識別肌少症風險。</p>
+                <p class="questionnaire-desc">SARC-F (Sarcopenia Functional Questionnaire) 是一種簡便且有效的肌少症篩檢工具，透過評估日常生活功能來識別肌少症風險</p>
                 
                 <div class="question-group">
-                    <p><strong>1. 握力 (Strength)：</strong>您在搬運或提起 4.5 公斤 (約10磅) 的物品時有多困難？</p>
+                    <p><strong>1. 握力 (Strength)</strong>您在搬運或提起 4.5 公斤 (約10磅) 的物品時有多困難？</p>
                     <div class="radio-group-vertical">
                         <label><input type="radio" name="sarcf-q1" value="0">沒有困難</label>
                         <label><input type="radio" name="sarcf-q1" value="1">有點困難</label>
@@ -425,7 +590,7 @@
                 </div>
 
                 <div class="question-group">
-                    <p><strong>2. 輔助行走 (Assistance walking)：</strong>您在房間內行走時有多困難？</p>
+                    <p><strong>2. 輔助行走 (Assistance walking)</strong>您在房間內行走時有多困難？</p>
                     <div class="radio-group-vertical">
                         <label><input type="radio" name="sarcf-q2" value="0">沒有困難</label>
                         <label><input type="radio" name="sarcf-q2" value="1">有點困難</label>
@@ -434,7 +599,7 @@
                 </div>
 
                 <div class="question-group">
-                    <p><strong>3. 起身 (Rise from a chair)：</strong>您從椅子或床上起身時有多困難？</p>
+                    <p><strong>3. 起身 (Rise from a chair)</strong>您從椅子或床上起身時有多困難？</p>
                     <div class="radio-group-vertical">
                         <label><input type="radio" name="sarcf-q3" value="0">沒有困難</label>
                         <label><input type="radio" name="sarcf-q3" value="1">有點困難</label>
@@ -443,7 +608,7 @@
                 </div>
 
                 <div class="question-group">
-                    <p><strong>4. 爬樓梯 (Climb stairs)：</strong>您爬 10 個階梯時有多困難？</p>
+                    <p><strong>4. 爬樓梯 (Climb stairs)</strong>您爬 10 個階梯時有多困難？</p>
                     <div class="radio-group-vertical">
                         <label><input type="radio" name="sarcf-q4" value="0">沒有困難</label>
                         <label><input type="radio" name="sarcf-q4" value="1">有點困難</label>
@@ -452,7 +617,7 @@
                 </div>
 
                 <div class="question-group">
-                    <p><strong>5. 跌倒 (Falls)：</strong>過去一年內您跌倒了幾次？</p>
+                    <p><strong>5. 跌倒 (Falls)</strong>過去一年內您跌倒了幾次？</p>
                     <div class="radio-group-vertical">
                         <label><input type="radio" name="sarcf-q5" value="0">沒有跌倒</label>
                         <label><input type="radio" name="sarcf-q5" value="1">1-3 次</label>
@@ -465,9 +630,9 @@
 
                 <div class="info-section">
                     <h4>SARC-F (肌少症功能篩檢問卷)</h4>
-                    <p><strong>用途：</strong>快速篩檢肌少症風險，評估肌肉功能和日常生活活動能力。</p>
-                    <p><strong>評分：</strong>總分 0-10 分，分數≥4分表示肌少症篩檢陽性，建議進一步醫學檢查。</p>
-                    <p><strong>評估項目：</strong>握力、步行能力、起身能力、爬樓梯能力和跌倒歷史。</p>
+                    <p><strong>用途</strong>快速篩檢肌少症風險，評估肌肉功能和日常生活活動能力</p>
+                    <p><strong>評分</strong>總分 0-10 分，分數≥4分表示肌少症篩檢陽性，建議進一步醫學檢查</p>
+                    <p><strong>評估項目</strong>握力、步行能力、起身能力、爬樓梯能力和跌倒歷史</p>
                 </div>
             </div>
         </div>

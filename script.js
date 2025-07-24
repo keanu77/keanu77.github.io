@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize body fat input visibility
-    toggleBodyFatInputs();
 
     // Initialize composition tab switching
     const compositionTabButtons = document.querySelectorAll('.composition-tab-btn');
@@ -240,85 +238,29 @@ function calculateTDEE() {
     
 }
 
-// Body Fat Calculator input visibility toggle
-function toggleBodyFatInputs() {
-    const method = document.getElementById('method').value;
-    const gender = document.querySelector('input[name="gender-bf"]:checked').value;
-    const neckGroup = document.getElementById('neck-group');
-    const hipGroup = document.getElementById('hip-group');
-    const weightGroup = document.getElementById('weight-group-ymca');
-
-    if (method === 'navy') {
-        neckGroup.style.display = 'block';
-        weightGroup.style.display = 'none';
-        if (gender === 'female') {
-            hipGroup.style.display = 'block';
-        } else {
-            hipGroup.style.display = 'none';
-        }
-    } else { // YMCA
-        neckGroup.style.display = 'none';
-        hipGroup.style.display = 'none';
-        weightGroup.style.display = 'block';
-    }
-}
-
-// Add event listeners for gender change in body fat calculator
-document.addEventListener('DOMContentLoaded', function() {
-    const genderRadios = document.querySelectorAll('input[name="gender-bf"]');
-    genderRadios.forEach(radio => {
-        radio.addEventListener('change', toggleBodyFatInputs);
-    });
-});
 
 // Body Fat Calculator
 function calculateBodyFat() {
     const gender = document.querySelector('input[name="gender-bf"]:checked').value;
-    const method = document.getElementById('method').value;
+    const age = parseFloat(document.getElementById('age-bf').value);
     const height = parseFloat(document.getElementById('height-bf').value);
-    const waist = parseFloat(document.getElementById('waist').value);
+    const weight = parseFloat(document.getElementById('weight-bf').value);
 
-    if (!height || !waist || height <= 0 || waist <= 0) {
-        document.getElementById('bodyfat-result').innerHTML = '<p class="warning">請輸入有效的數值</p>';
+    if (!age || !height || !weight || age <= 0 || height <= 0 || weight <= 0) {
+        document.getElementById('bodyfat-result').innerHTML = '<p class="warning">請輸入有效的年齡、身高和體重數值</p>';
         return;
     }
 
+    // Calculate BMI first
+    const heightInMeters = height / 100;
+    const bmi = weight / (heightInMeters * heightInMeters);
+
+    // Calculate body fat using the new formula
     let bodyFat;
-    let methodName;
-
-    if (method === 'navy') {
-        methodName = 'US Navy 公式';
-        const neck = parseFloat(document.getElementById('neck').value);
-        
-        if (!neck || neck <= 0) {
-            document.getElementById('bodyfat-result').innerHTML = '<p class="warning">請輸入有效的頸圍數值</p>';
-            return;
-        }
-
-        if (gender === 'male') {
-            bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
-        } else {
-            const hip = parseFloat(document.getElementById('hip').value);
-            if (!hip || hip <= 0) {
-                document.getElementById('bodyfat-result').innerHTML = '<p class="warning">請輸入有效的臀圍數值</p>';
-                return;
-            }
-            bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
-        }
-    } else { // YMCA
-        methodName = 'YMCA 公式';
-        const weight = parseFloat(document.getElementById('weight-bf').value);
-        
-        if (!weight || weight <= 0) {
-            document.getElementById('bodyfat-result').innerHTML = '<p class="warning">請輸入有效的體重數值</p>';
-            return;
-        }
-
-        if (gender === 'male') {
-            bodyFat = (4.15 * waist - 0.082 * weight - 76.76);
-        } else {
-            bodyFat = (4.15 * waist - 0.082 * weight - 65.01);
-        }
+    if (gender === 'male') {
+        bodyFat = 1.2 * bmi + 0.23 * age - 16.2;
+    } else {
+        bodyFat = 1.2 * bmi + 0.23 * age - 5.4;
     }
 
     let category, categoryClass, advice;
@@ -373,11 +315,13 @@ function calculateBodyFat() {
 
     document.getElementById('bodyfat-result').innerHTML = `
         <div class="metric-card">
-            <div class="metric-label">您的體脂肪率 (${methodName})</div>
+            <div class="metric-label">您的體脂肪率 (研究公式)</div>
             <div class="metric-value">${bodyFat.toFixed(1)}%</div>
             <p class="${categoryClass}">分類：${category}</p>
-            <p>性別：${genderText}</p>
+            <p>性別：${genderText} | 年齡：${age}歲 | BMI：${bmi.toFixed(1)}</p>
             <div class="health-tip">
+                <h4>計算公式</h4>
+                <p>${genderText}：體脂率 = 1.2 × BMI + 0.23 × 年齡 ${gender === 'male' ? '- 16.2' : '- 5.4'}</p>
                 <h4>健康建議</h4>
                 <p>${advice}</p>
             </div>
