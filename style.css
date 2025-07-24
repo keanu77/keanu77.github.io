@@ -513,6 +513,33 @@ footer {
 }
 
 /* Questionnaire Styles */
+.info-section h3 {
+    color: #000000;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.info-section h4 {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.info-section p {
+    color: #333333;
+    line-height: 1.6;
+    font-weight: normal;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.info-section ul {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
 .questionnaire-tabs {
     display: flex;
     justify-content: center;
