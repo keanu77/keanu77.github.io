@@ -959,3 +959,599 @@ function calculatePARQ() {
     `;
     
 }
+
+// 壓力指數測量表計算函數
+function calculateStress() {
+    let totalScore = 0;
+    const questions = ['stress-q1', 'stress-q2', 'stress-q3', 'stress-q4', 'stress-q5', 'stress-q6', 'stress-q7', 'stress-q8', 'stress-q9', 'stress-q10', 'stress-q11', 'stress-q12'];
+    
+    let allAnswered = true;
+    
+    for (let i = 0; i < questions.length; i++) {
+        const radios = document.getElementsByName(questions[i]);
+        let answered = false;
+        
+        for (let j = 0; j < radios.length; j++) {
+            if (radios[j].checked) {
+                totalScore += parseInt(radios[j].value);
+                answered = true;
+                break;
+            }
+        }
+        
+        if (!answered) {
+            allAnswered = false;
+            break;
+        }
+    }
+    
+    if (!allAnswered) {
+        document.getElementById('stress-result').innerHTML = '<p class="warning">請回答所有問題</p>';
+        return;
+    }
+    
+    let stressLevel, stressClass, description, recommendations;
+    
+    if (totalScore <= 3) {
+        stressLevel = '輕度壓力';
+        stressClass = 'stress-low';
+        description = '您目前的壓力狀況良好，身心狀態相對穩定';
+        recommendations = [
+            '繼續維持健康的生活型態',
+            '保持規律的作息和運動習慣',
+            '維持良好的社交關係',
+            '適度的工作與休閒平衡',
+            '定期進行壓力自我檢測'
+        ];
+    } else if (totalScore <= 6) {
+        stressLevel = '中度壓力';
+        stressClass = 'stress-medium';
+        description = '您開始出現一些壓力症狀，需要適當調整生活步調';
+        recommendations = [
+            '檢視並調整工作負荷',
+            '增加休閒娛樂活動時間',
+            '學習壓力管理技巧（如深呼吸、冥想）',
+            '改善睡眠品質，確保充足休息',
+            '與親友分享心情，尋求支持',
+            '考慮參加壓力管理課程'
+        ];
+    } else if (totalScore <= 9) {
+        stressLevel = '重度壓力';
+        stressClass = 'stress-high';
+        description = '您的壓力症狀已經比較明顯，建議尋求專業協助';
+        recommendations = [
+            '建議諮詢心理師或精神科醫師',
+            '考慮參加心理諮商或治療',
+            '學習專業的壓力管理技巧',
+            '調整工作內容或尋求職場支援',
+            '規律運動，特別是有氧運動',
+            '避免過度使用咖啡因或酒精',
+            '建立穩定的社會支持系統'
+        ];
+    } else {
+        stressLevel = '極重度壓力';
+        stressClass = 'stress-severe';
+        description = '您處於嚴重的壓力狀態，強烈建議立即尋求專業醫療協助';
+        recommendations = [
+            '立即諮詢醫師或心理健康專業人員',
+            '可能需要藥物治療配合心理治療',
+            '暫時減少工作壓力或申請病假',
+            '尋求家人朋友的密切支持',
+            '避免做重大決定',
+            '建立每日的自我照護計畫',
+            '定期醫療追蹤和評估'
+        ];
+    }
+    
+    // 分析具體症狀領域
+    const symptomAreas = [];
+    if (document.querySelector('input[name="stress-q1"]:checked')?.value === '1') symptomAreas.push('工作壓力');
+    if (document.querySelector('input[name="stress-q2"]:checked')?.value === '1') symptomAreas.push('睡眠障礙');
+    if (document.querySelector('input[name="stress-q3"]:checked')?.value === '1') symptomAreas.push('情緒困擾');
+    if (document.querySelector('input[name="stress-q4"]:checked')?.value === '1') symptomAreas.push('認知功能');
+    if (document.querySelector('input[name="stress-q5"]:checked')?.value === '1') symptomAreas.push('食慾變化');
+    if (document.querySelector('input[name="stress-q6"]:checked')?.value === '1') symptomAreas.push('免疫力下降');
+    if (document.querySelector('input[name="stress-q7"]:checked')?.value === '1') symptomAreas.push('疲勞倦怠');
+    if (document.querySelector('input[name="stress-q8"]:checked')?.value === '1') symptomAreas.push('身體不適');
+    if (document.querySelector('input[name="stress-q9"]:checked')?.value === '1') symptomAreas.push('人際關係');
+    if (document.querySelector('input[name="stress-q10"]:checked')?.value === '1') symptomAreas.push('專注力問題');
+    if (document.querySelector('input[name="stress-q11"]:checked')?.value === '1') symptomAreas.push('焦慮恐懼');
+    if (document.querySelector('input[name="stress-q12"]:checked')?.value === '1') symptomAreas.push('外觀變化');
+    
+    document.getElementById('stress-result').innerHTML = `
+        <div class="questionnaire-result">
+            <div class="score-display">
+                <span class="score-value">${totalScore}</span>
+                <div class="score-label">總分 (滿分12分)</div>
+            </div>
+
+            <div class="risk-level ${stressClass}">
+                ${stressLevel}
+            </div>
+
+            <p><strong>評估結果：</strong>${description}</p>
+
+            ${symptomAreas.length > 0 ? `
+                <div class="symptom-areas">
+                    <h4>主要壓力症狀領域：</h4>
+                    <ul>
+                        ${symptomAreas.map(area => `<li>${area}</li>`).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+
+            <div class="recommendations">
+                <h4>建議改善方案</h4>
+                <ul>
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="health-tip">
+                <h4>壓力管理小貼士</h4>
+                <div class="stress-tips">
+                    <div class="tip-category">
+                        <strong>急性壓力緩解技巧：</strong>
+                        <ul>
+                            <li>4-7-8呼吸法（吸氣4秒，憋氣7秒，呼氣8秒）</li>
+                            <li>肌肉漸進式放鬆</li>
+                            <li>短暫散步或伸展運動</li>
+                            <li>聽音樂或進行冥想</li>
+                        </ul>
+                    </div>
+                    <div class="tip-category">
+                        <strong>長期壓力管理策略：</strong>
+                        <ul>
+                            <li>建立規律的運動習慣</li>
+                            <li>培養興趣愛好</li>
+                            <li>學習時間管理技巧</li>
+                            <li>建立良好的支持網絡</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-note">
+                <h4>重要提醒</h4>
+                <p>本量表僅為初步評估工具。如果壓力症狀持續超過2週且影響日常生活，或有自傷想法，請立即尋求專業醫療協助。</p>
+            </div>
+        </div>
+    `;
+}
+
+// 飲食行為測量表計算函數
+function calculateEating() {
+    let totalScore = 0;
+    const questions = ['eating-q1', 'eating-q2', 'eating-q3', 'eating-q4', 'eating-q5', 'eating-q6', 'eating-q7', 'eating-q8', 'eating-q9', 'eating-q10', 'eating-q11', 'eating-q12'];
+    
+    let allAnswered = true;
+    
+    for (let i = 0; i < questions.length; i++) {
+        const radios = document.getElementsByName(questions[i]);
+        let answered = false;
+        
+        for (let j = 0; j < radios.length; j++) {
+            if (radios[j].checked) {
+                totalScore += parseInt(radios[j].value);
+                answered = true;
+                break;
+            }
+        }
+        
+        if (!answered) {
+            allAnswered = false;
+            break;
+        }
+    }
+    
+    if (!allAnswered) {
+        document.getElementById('eating-result').innerHTML = '<p class="warning">請回答所有問題</p>';
+        return;
+    }
+    
+    let eatingLevel, eatingClass, description, recommendations;
+    
+    if (totalScore <= 12) {
+        eatingLevel = '飲食行為不良';
+        eatingClass = 'eating-poor';
+        description = '哎呀！您的飲食行為很不健康，建議積極調整飲食習慣';
+        recommendations = [
+            '立即開始規律三餐，設定固定用餐時間',
+            '停止宵夜和非正餐時間進食習慣',
+            '戒除含糖飲料，改喝白開水',
+            '減少油炸和高脂肪食物攝取',
+            '增加蔬菜水果的攝取量',
+            '學習慢食技巧，每口食物咀嚼20-30下',
+            '尋求營養師專業諮詢制定飲食計畫'
+        ];
+    } else if (totalScore <= 20) {
+        eatingLevel = '飲食行為待改善';
+        eatingClass = 'eating-fair';
+        description = '您的飲食習慣略有不足，需要持續努力改善';
+        recommendations = [
+            '加強正餐時間的規律性',
+            '減少情緒性進食的頻率',
+            '增加健康食物的選擇比例',
+            '改善進食速度，學習細嚼慢嚥',
+            '控制看電視或使用電腦時的進食',
+            '選擇低脂乳製品取代全脂產品',
+            '建立健康的餐間點心選擇'
+        ];
+    } else if (totalScore <= 30) {
+        eatingLevel = '飲食行為良好';
+        eatingClass = 'eating-good';
+        description = '加油！您的飲食行為大致良好，繼續改善小缺點即可';
+        recommendations = [
+            '維持現有的良好飲食習慣',
+            '持續優化食物選擇品質',
+            '強化蔬果攝取的多樣性',
+            '完善水分攝取習慣',
+            '偶爾檢視並調整飲食內容',
+            '學習更多營養知識',
+            '成為家人朋友的健康飲食榜樣'
+        ];
+    } else {
+        eatingLevel = '飲食行為優秀';
+        eatingClass = 'eating-excellent';
+        description = '太棒了！您的飲食習慣非常健康，請繼續保持';
+        recommendations = [
+            '繼續維持優良的飲食習慣',
+            '定期檢視飲食內容的營養均衡',
+            '適時調整季節性食材攝取',
+            '分享健康飲食經驗給他人',
+            '持續關注最新的營養研究',
+            '維持良好的飲食與運動平衡',
+            '成為健康生活的推廣者'
+        ];
+    }
+    
+    // 分析具體問題領域
+    const problemAreas = [];
+    if (document.querySelector('input[name="eating-q1"]:checked')?.value <= '1') problemAreas.push('用餐規律性不足');
+    if (document.querySelector('input[name="eating-q2"]:checked')?.value <= '1') problemAreas.push('甜食零食攝取過多');
+    if (document.querySelector('input[name="eating-q3"]:checked')?.value <= '1') problemAreas.push('咀嚼習慣不良');
+    if (document.querySelector('input[name="eating-q4"]:checked')?.value <= '1') problemAreas.push('含糖飲料攝取過多');
+    if (document.querySelector('input[name="eating-q5"]:checked')?.value <= '1') problemAreas.push('乳製品選擇需改善');
+    if (document.querySelector('input[name="eating-q6"]:checked')?.value <= '1') problemAreas.push('蔬果攝取不足');
+    if (document.querySelector('input[name="eating-q7"]:checked')?.value <= '1') problemAreas.push('高脂食物攝取過多');
+    if (document.querySelector('input[name="eating-q8"]:checked')?.value <= '1') problemAreas.push('分心進食習慣');
+    if (document.querySelector('input[name="eating-q9"]:checked')?.value <= '1') problemAreas.push('情緒性進食');
+    if (document.querySelector('input[name="eating-q10"]:checked')?.value <= '1') problemAreas.push('進食速度過快');
+    if (document.querySelector('input[name="eating-q11"]:checked')?.value <= '1') problemAreas.push('宵夜習慣');
+    if (document.querySelector('input[name="eating-q12"]:checked')?.value <= '1') problemAreas.push('非正餐時間進食');
+    
+    document.getElementById('eating-result').innerHTML = `
+        <div class="questionnaire-result">
+            <div class="score-display">
+                <span class="score-value">${totalScore}</span>
+                <div class="score-label">總分 (滿分36分)</div>
+            </div>
+
+            <div class="risk-level ${eatingClass}">
+                ${eatingLevel}
+            </div>
+
+            <p><strong>評估結果：</strong>${description}</p>
+
+            ${problemAreas.length > 0 ? `
+                <div class="problem-areas">
+                    <h4>需要改善的飲食行為：</h4>
+                    <ul>
+                        ${problemAreas.map(area => `<li>${area}</li>`).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+
+            <div class="recommendations">
+                <h4>改善建議</h4>
+                <ul>
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="health-tip">
+                <h4>健康飲食小貼士</h4>
+                <div class="eating-tips">
+                    <div class="tip-category">
+                        <strong>每日飲食指南：</strong>
+                        <ul>
+                            <li>全穀雜糧類：每餐1.5-4碗，選擇未精製穀類</li>
+                            <li>豆魚蛋肉類：每餐1-2份手掌大小</li>
+                            <li>蔬菜類：每餐1-2份拳頭大小</li>
+                            <li>水果類：每日2-4份拳頭大小</li>
+                            <li>乳品類：每日1.5-2杯，選擇低脂產品</li>
+                            <li>油脂類：每日3-7茶匙，選擇好油</li>
+                        </ul>
+                    </div>
+                    <div class="tip-category">
+                        <strong>實用飲食技巧：</strong>
+                        <ul>
+                            <li>使用小盤子控制份量，避免吃到撐</li>
+                            <li>餐前喝一杯水，增加飽足感</li>
+                            <li>先吃蔬菜再吃肉類和澱粉</li>
+                            <li>用餐時放下手機，專心品嘗食物</li>
+                            <li>準備健康零食，避免餓過頭亂吃</li>
+                            <li>學會看營養標示，選擇健康食品</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-note">
+                <h4>營養均衡提醒</h4>
+                <p>良好的飲食習慣是健康的基石。建議搭配適量運動，維持理想體重，並定期檢查身體狀況。</p>
+                <p><strong>特殊情況請諮詢專業：</strong>如有糖尿病、高血壓、腎臟病等慢性疾病，請諮詢營養師制定個人化飲食計畫。</p>
+            </div>
+        </div>
+    `;
+}
+
+// FRAX骨折風險評估計算函數
+function calculateFRAX() {
+    // 基本資料驗證
+    const age = parseInt(document.getElementById('frax-age').value);
+    const weight = parseFloat(document.getElementById('frax-weight').value);
+    const height = parseFloat(document.getElementById('frax-height').value);
+    const gender = document.querySelector('input[name="frax-gender"]:checked')?.value;
+    
+    if (!age || !weight || !height || !gender) {
+        document.getElementById('frax-result').innerHTML = '<p class="warning">請填寫所有必填欄位</p>';
+        return;
+    }
+    
+    if (age < 40 || age > 90) {
+        document.getElementById('frax-result').innerHTML = '<p class="warning">年齡必須在40-90歲之間</p>';
+        return;
+    }
+    
+    // 取得風險因子
+    const fracture = document.querySelector('input[name="frax-fracture"]:checked')?.value === 'yes';
+    const parentHip = document.querySelector('input[name="frax-parent"]:checked')?.value === 'yes';
+    const smoking = document.querySelector('input[name="frax-smoking"]:checked')?.value === 'yes';
+    const steroid = document.querySelector('input[name="frax-steroid"]:checked')?.value === 'yes';
+    const ra = document.querySelector('input[name="frax-ra"]:checked')?.value === 'yes';
+    const secondary = document.querySelector('input[name="frax-secondary"]:checked')?.value === 'yes';
+    const alcohol = document.querySelector('input[name="frax-alcohol"]:checked')?.value === 'yes';
+    const bmd = parseFloat(document.getElementById('frax-bmd').value) || null;
+    
+    // 確認所有單選題都已回答
+    const radioGroups = ['frax-fracture', 'frax-parent', 'frax-smoking', 'frax-steroid', 'frax-ra', 'frax-secondary', 'frax-alcohol'];
+    for (let group of radioGroups) {
+        if (!document.querySelector(`input[name="${group}"]:checked`)) {
+            document.getElementById('frax-result').innerHTML = '<p class="warning">請回答所有問題</p>';
+            return;
+        }
+    }
+    
+    // 計算BMI
+    const bmi = weight / ((height / 100) ** 2);
+    
+    // 台灣FRAX模型計算（基於台灣流行病學資料）
+    // 台灣基準風險 - 根據年齡和性別，參考台灣骨質疏鬆症流行病學資料
+    let baseRisk = 0;
+    if (gender === 'female') {
+        // 台灣女性基準風險（亞洲人種骨折風險相對較低）
+        if (age >= 40 && age < 50) baseRisk = 1.2;
+        else if (age >= 50 && age < 60) baseRisk = 3.8;
+        else if (age >= 60 && age < 70) baseRisk = 7.2;
+        else if (age >= 70 && age < 80) baseRisk = 13.5;
+        else if (age >= 80) baseRisk = 22.8;
+    } else {
+        // 台灣男性基準風險
+        if (age >= 40 && age < 50) baseRisk = 0.8;
+        else if (age >= 50 && age < 60) baseRisk = 2.1;
+        else if (age >= 60 && age < 70) baseRisk = 4.8;
+        else if (age >= 70 && age < 80) baseRisk = 9.6;
+        else if (age >= 80) baseRisk = 17.2;
+    }
+    
+    // 台灣特異性風險乘數
+    let riskMultiplier = 1.0;
+    
+    // BMI影響（亞洲人種特異性調整）
+    if (bmi < 18.5) {
+        riskMultiplier *= 1.6; // 亞洲人BMI過低影響更大
+    } else if (bmi >= 18.5 && bmi < 24) {
+        riskMultiplier *= 1.0; // 正常範圍
+    } else if (bmi >= 24 && bmi < 27) {
+        riskMultiplier *= 0.9; // 輕度過重
+    } else if (bmi >= 27) {
+        riskMultiplier *= 0.75; // 肥胖對亞洲人骨折風險保護作用較明顯
+    }
+    
+    // 台灣研究的風險因子相對風險比
+    if (fracture) riskMultiplier *= 1.92; // 台灣研究顯示既往骨折RR=1.92
+    if (parentHip) riskMultiplier *= 1.68; // 家族史在亞洲人群中相對風險比
+    if (smoking) riskMultiplier *= 1.31; // 台灣吸菸者骨折風險
+    if (steroid) riskMultiplier *= 2.15; // 糖皮質類固醇在亞洲人群的影響
+    if (ra) riskMultiplier *= 1.48; // 台灣類風濕性關節炎患者風險
+    if (secondary) riskMultiplier *= 1.58; // 繼發性骨質疏鬆症
+    if (alcohol) riskMultiplier *= 1.28; // 亞洲人酒精代謝差異的影響
+    
+    // BMD調整（台灣DEXA標準）
+    if (bmd !== null) {
+        // 使用台灣年輕成人參考值調整的T-score影響
+        if (bmd <= -3.0) {
+            riskMultiplier *= 3.2;
+        } else if (bmd <= -2.5) {
+            riskMultiplier *= 2.8;
+        } else if (bmd <= -2.0) {
+            riskMultiplier *= 2.2;
+        } else if (bmd <= -1.5) {
+            riskMultiplier *= 1.8;
+        } else if (bmd <= -1.0) {
+            riskMultiplier *= 1.4;
+        } else if (bmd <= -0.5) {
+            riskMultiplier *= 1.2;
+        } else {
+            riskMultiplier *= 1.0;
+        }
+    }
+    
+    // 計算主要骨質疏鬆性骨折風險
+    let majorFractureRisk = baseRisk * riskMultiplier;
+    majorFractureRisk = Math.min(Math.max(majorFractureRisk, 0.3), 75);
+    
+    // 台灣髖骨骨折風險計算（亞洲人髖骨骨折比例相對較低）
+    let hipFractureRisk = majorFractureRisk * 0.25; // 亞洲人髖骨骨折佔主要骨折的比例較低
+    
+    // 台灣特異性髖骨骨折調整
+    let hipMultiplier = 1.0;
+    if (parentHip) hipMultiplier *= 1.8; // 家族髖骨骨折史對台灣人髖骨風險影響
+    if (steroid) hipMultiplier *= 1.4; // 糖皮質類固醇對髖骨的特殊影響
+    if (bmi < 18.5) hipMultiplier *= 1.3; // 低BMI對髖骨風險的影響
+    if (age >= 75) hipMultiplier *= 1.2; // 高齡者髖骨骨折風險增加
+    
+    hipFractureRisk *= hipMultiplier;
+    hipFractureRisk = Math.min(Math.max(hipFractureRisk, 0.05), 35);
+    
+    let riskLevel, riskClass, description, recommendations, interventionThreshold;
+    
+    // 台灣骨質疏鬆症學會和健保署的治療閾值
+    // 考慮台灣人群特異性和健保給付標準
+    if (age >= 70) {
+        interventionThreshold = 12; // 70歲以上，考慮亞洲人基準風險較低
+    } else if (age >= 65) {
+        interventionThreshold = 15; // 65-69歲
+    } else if (age >= 50) {
+        interventionThreshold = 18; // 50-64歲
+    } else {
+        interventionThreshold = 22; // 50歲以下較高閾值
+    }
+    
+    // 台灣髖骨骨折風險治療閾值（亞洲人群調整）
+    const hipRiskThreshold = 2.5;
+    
+    if (majorFractureRisk < 10 && hipFractureRisk < 1.5) {
+        riskLevel = '低風險';
+        riskClass = 'frax-low';
+        description = '您的10年骨折風險較低，屬於正常範圍，繼續維持健康生活方式';
+        recommendations = [
+            '維持均衡飲食，每日攝取1000mg鈣質',
+            '保持規律運動，每週至少150分鐘中等強度運動',
+            '適當日曬或補充維生素D 600-800IU/日',
+            '戒菸限酒，維持健康體重',
+            '預防跌倒，改善居家環境安全',
+            '建議每3-5年進行一次骨密度檢查'
+        ];
+    } else if (majorFractureRisk < interventionThreshold && hipFractureRisk < hipRiskThreshold) {
+        riskLevel = '中等風險';
+        riskClass = 'frax-medium';
+        description = '您的10年骨折風險屬於中等程度，建議加強預防措施並考慮醫療評估';
+        recommendations = [
+            '增加鈣質攝取至1200mg/日，選擇易吸收形式',
+            '補充維生素D 800-1000IU/日，監測血中濃度',
+            '加強承重運動和阻力訓練，改善肌肉量',
+            '進行平衡訓練，如太極、瑜伽等',
+            '諮詢醫師評估是否需要藥物預防治療',
+            '建議每2年進行一次骨密度檢查',
+            '評估並治療其他影響骨質的疾病'
+        ];
+    } else {
+        riskLevel = '高風險';
+        riskClass = 'frax-high';
+        description = '您的10年骨折風險較高，符合藥物治療條件，強烈建議立即尋求專業醫療評估';
+        recommendations = [
+            '立即諮詢骨科、運動醫學科、內分泌科或老年醫學科醫師',
+            '進行完整的骨質疏鬆症評估和實驗室檢查',
+            '開始藥物治療（如雙磷酸鹽類、denosumab等）',
+            '制定個人化且安全的運動計畫',
+            '積極改善所有可控制的風險因子',
+            '加強跌倒預防措施和居家安全改善',
+            '建議每1-2年進行一次骨密度檢查監測療效',
+            '定期追蹤血清骨代謝標記'
+        ];
+    }
+    
+    // 分析主要風險因子
+    const riskFactors = [];
+    if (fracture) riskFactors.push('既往骨折病史');
+    if (parentHip) riskFactors.push('父母髖骨骨折史');
+    if (smoking) riskFactors.push('目前吸菸');
+    if (steroid) riskFactors.push('長期使用糖皮質類固醇');
+    if (ra) riskFactors.push('類風濕性關節炎');
+    if (secondary) riskFactors.push('繼發性骨質疏鬆症');
+    if (alcohol) riskFactors.push('過量飲酒');
+    if (bmi < 20) riskFactors.push('體重過輕');
+    if (age >= 65) riskFactors.push('高齡');
+    if (bmd && bmd < -2.5) riskFactors.push('骨密度過低');
+    
+    document.getElementById('frax-result').innerHTML = `
+        <div class="questionnaire-result">
+            <div class="frax-scores">
+                <div class="score-display">
+                    <span class="score-value">${majorFractureRisk.toFixed(1)}%</span>
+                    <div class="score-label">10年主要骨質疏鬆性骨折風險</div>
+                </div>
+                <div class="score-display">
+                    <span class="score-value">${hipFractureRisk.toFixed(1)}%</span>
+                    <div class="score-label">10年髖骨骨折風險</div>
+                </div>
+            </div>
+
+            <div class="risk-level ${riskClass}">
+                ${riskLevel}
+            </div>
+
+            <p><strong>評估結果：</strong>${description}</p>
+
+            ${riskFactors.length > 0 ? `
+                <div class="risk-factors">
+                    <h4>您的主要風險因子：</h4>
+                    <ul>
+                        ${riskFactors.map(factor => `<li>${factor}</li>`).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+
+            <div class="recommendations">
+                <h4>建議措施</h4>
+                <ul>
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="health-tip">
+                <h4>骨質健康小提醒</h4>
+                <div class="bone-tips">
+                    <div class="tip-category">
+                        <strong>飲食建議：</strong>
+                        <ul>
+                            <li>每日攝取1000-1200mg鈣質（乳製品、深綠色蔬菜）</li>
+                            <li>維生素D 800-1000IU/日（魚類、蛋黃、適當日曬）</li>
+                            <li>充足蛋白質攝取，維持肌肉量</li>
+                            <li>限制咖啡因和鈉的攝取</li>
+                        </ul>
+                    </div>
+                    <div class="tip-category">
+                        <strong>運動建議：</strong>
+                        <ul>
+                            <li>承重運動：快走、慢跑、爬樓梯</li>
+                            <li>阻力訓練：啞鈴、彈力帶訓練</li>
+                            <li>平衡訓練：太極、瑜伽</li>
+                            <li>避免高風險運動，預防跌倒</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="risk-interpretation">
+                <h4>風險數值解釋</h4>
+                <p><strong>主要骨質疏鬆性骨折</strong>包括：脊椎骨折、髖骨骨折、前臂骨折、肱骨骨折等臨床重要骨折。</p>
+                <p><strong>髖骨骨折</strong>是最嚴重的骨質疏鬆性骨折，可能導致永久失能或死亡。</p>
+                <p><strong>治療閾值</strong>：${age}歲的治療建議閾值為主要骨折風險${interventionThreshold}%或髖骨骨折風險${hipRiskThreshold}%。</p>
+                ${majorFractureRisk >= interventionThreshold || hipFractureRisk >= hipRiskThreshold ? 
+                    '<p class="treatment-indication"><strong>您的風險已達到藥物治療條件</strong>，建議與醫師討論治療選項。</p>' : 
+                    '<p class="prevention-focus">目前以<strong>生活方式調整和預防措施</strong>為主要策略。</p>'
+                }
+            </div>
+
+            <div class="medical-note">
+                <h4>重要醫療提醒</h4>
+                <p><strong>本工具限制</strong>：此為簡化版FRAX評估，實際WHO FRAX工具使用更複雜的統計模型和國家特異性數據。結果僅供初步參考。</p>
+                <p><strong>建議檢查</strong>：DEXA骨密度檢查、血清25-OH維生素D、副甲狀腺素(PTH)、鹼性磷酶、骨代謝標記等。</p>
+                <p><strong>專科諮詢</strong>：如風險評估為中高風險，或有既往骨折史，請諮詢骨科、運動醫學科、內分泌科或老年醫學科專科醫師制定個人化治療計畫。</p>
+            </div>
+        </div>
+    `;
+}

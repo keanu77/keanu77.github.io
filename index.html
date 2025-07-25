@@ -434,6 +434,9 @@
                 <button class="questionnaire-tab-btn active" data-questionnaire="sppb">SPPB 身體功能評估</button>
                 <button class="questionnaire-tab-btn" data-questionnaire="parq">PAR-Q+ 運動準備問卷</button>
                 <button class="questionnaire-tab-btn" data-questionnaire="sarcf">SARC-F 肌少症篩檢</button>
+                <button class="questionnaire-tab-btn" data-questionnaire="stress">壓力指數測量表</button>
+                <button class="questionnaire-tab-btn" data-questionnaire="eating">飲食行為測量表</button>
+                <button class="questionnaire-tab-btn" data-questionnaire="frax">FRAX骨折風險評估</button>
             </div>
 
             <!-- SPPB Questionnaire -->
@@ -743,6 +746,534 @@
                     </ul>
                     
                     <p><strong>篩檢限制與注意事項</strong>SARC-F為主觀評估工具，需搭配客觀測量(握力、肌肉量)做完整評估，不能單獨作為診斷依據</p>
+                </div>
+            </div>
+
+            <!-- 壓力指數測量表 -->
+            <div class="questionnaire-form" id="stress-form">
+                <h3>壓力指數測量表</h3>
+                <p class="questionnaire-desc">透過12個簡單問題評估您的心理壓力狀況，幫助您了解壓力對身心健康的影響程度</p>
+                
+                <div class="question-group">
+                    <p><strong>1.</strong> 最近是否經常感到緊張，覺得工作總是做不完？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q1" value="1">是</label>
+                        <label><input type="radio" name="stress-q1" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>2.</strong> 最近是否老是睡不好，常常失眠或睡眠品質不佳？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q2" value="1">是</label>
+                        <label><input type="radio" name="stress-q2" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>3.</strong> 最近是否經常有情緒低落、焦慮、煩躁的情況？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q3" value="1">是</label>
+                        <label><input type="radio" name="stress-q3" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>4.</strong> 最近是否經常忘東忘西、變得很健忘？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q4" value="1">是</label>
+                        <label><input type="radio" name="stress-q4" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>5.</strong> 最近是否經常覺得胃口不好？或胃口特別好？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q5" value="1">是</label>
+                        <label><input type="radio" name="stress-q5" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>6.</strong> 最近六個月內是否生病不只一次了？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q6" value="1">是</label>
+                        <label><input type="radio" name="stress-q6" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>7.</strong> 最近是否經常覺得很累，假日都在睡覺？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q7" value="1">是</label>
+                        <label><input type="radio" name="stress-q7" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>8.</strong> 最近是否經常覺得頭痛、腰痠背痛？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q8" value="1">是</label>
+                        <label><input type="radio" name="stress-q8" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>9.</strong> 最近是否經常意見和別人不同？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q9" value="1">是</label>
+                        <label><input type="radio" name="stress-q9" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>10.</strong> 最近是否注意力經常難以集中？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q10" value="1">是</label>
+                        <label><input type="radio" name="stress-q10" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>11.</strong> 最近是否經常覺得未來充滿不確定感？恐懼感？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q11" value="1">是</label>
+                        <label><input type="radio" name="stress-q11" value="0">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>12.</strong> 有人說您最近氣色不太好嗎？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stress-q12" value="1">是</label>
+                        <label><input type="radio" name="stress-q12" value="0">否</label>
+                    </div>
+                </div>
+
+                <button onclick="calculateStress()">計算壓力指數</button>
+                <div class="result" id="stress-result"></div>
+
+                <div class="info-section">
+                    <h4>壓力指數測量表詳細說明</h4>
+                    <p><strong>發展背景</strong>本量表由衛生福利部國民健康署開發，用於職場心理健康促進計劃，是簡便且有效的壓力篩檢工具</p>
+                    
+                    <p><strong>評估內容領域</strong></p>
+                    <ul>
+                        <li><strong>工作壓力</strong>工作負荷感、時間壓力、工作完成度困擾</li>
+                        <li><strong>睡眠品質</strong>失眠、睡眠品質不佳等睡眠障礙症狀</li>
+                        <li><strong>情緒狀態</strong>焦慮、煩躁、情緒低落等負面情緒表現</li>
+                        <li><strong>認知功能</strong>記憶力下降、注意力不集中等認知症狀</li>
+                        <li><strong>身體症狀</strong>食慾改變、疲勞、頭痛、腰痠背痛等身體不適</li>
+                        <li><strong>社交關係</strong>人際互動困難、意見分歧增加</li>
+                        <li><strong>健康狀況</strong>免疫力下降、疾病頻率增加、外觀氣色變化</li>
+                    </ul>
+                    
+                    <p><strong>壓力指數分級與健康建議</strong></p>
+                    <ul>
+                        <li><strong>0-3分 (輕度壓力)</strong>壓力狀況良好，繼續維持健康的生活型態</li>
+                        <li><strong>4-6分 (中度壓力)</strong>開始出現壓力症狀，建議調整工作步調，增加休閒活動</li>
+                        <li><strong>7-9分 (重度壓力)</strong>壓力症狀明顯，建議尋求專業協助或心理諮商</li>
+                        <li><strong>10-12分 (極重度壓力)</strong>嚴重壓力狁態，強烈建議立即尋求醫療或心理專業協助</li>
+                    </ul>
+                    
+                    <p><strong>壓力對健康的影響</strong></p>
+                    <ul>
+                        <li><strong>急性反應</strong>心跳加速、血壓上升、肌肉緊張、注意力集中</li>
+                        <li><strong>慢性影響</strong>免疫力下降、心血管疾病風險增加、消化系統問題</li>
+                        <li><strong>心理健康</strong>焦慮症、憂鬱症、恐慌症等精神疾病風險增加</li>
+                        <li><strong>行為改變</strong>睡眠障礙、飲食異常、物質濫用、社交退縮</li>
+                    </ul>
+                    
+                    <p><strong>壓力管理策略</strong></p>
+                    <ul>
+                        <li><strong>身體層面</strong>規律運動、深呼吸練習、肌肉放鬆訓練、充足睡眠</li>
+                        <li><strong>心理層面</strong>正向思考、問題解決技巧、時間管理、目標設定</li>
+                        <li><strong>社會支持</strong>家人朋友支持、專業諮商、同儕團體、社交活動</li>
+                        <li><strong>環境調整</strong>工作環境改善、生活空間整理、減少壓力源</li>
+                    </ul>
+                    
+                    <p><strong>職場壓力預防</strong></p>
+                    <ul>
+                        <li><strong>工作安排</strong>合理工作量分配、彈性工作時間、適當休息時間</li>
+                        <li><strong>組織支持</strong>主管支持、同事協助、員工協助方案(EAP)</li>
+                        <li><strong>技能提升</strong>壓力管理訓練、溝通技巧訓練、情緒管理課程</li>
+                        <li><strong>健康促進</strong>健康檢查、健康謝座、運動促進活動</li>
+                    </ul>
+                    
+                    <p><strong>何時需要專業協助</strong></p>
+                    <ul>
+                        <li>壓力症狀持續超過2週且影響日常生活</li>
+                        <li>出現嚴重的睡眠障礙或食慾變化</li>
+                        <li>有自傷或傷害他人的想法</li>
+                        <li>無法透過自我調節改善壓力狀況</li>
+                        <li>工作效率明顯下降或人際關係惡化</li>
+                    </ul>
+                    
+                    <p><strong>注意事項</strong>本量表僅為初步篩檢工具，不能取代專業醫療診斷。如有持續性的身心不適症狀，建議諮詢醫療專業人員或心理師</p>
+                    
+                    <p><em>資料來源：衛生福利部國民健康署職場健康促進計劃</em></p>
+                </div>
+            </div>
+
+            <!-- 飲食行為測量表 -->
+            <div class="questionnaire-form" id="eating-form">
+                <h3>飲食行為測量表</h3>
+                <p class="questionnaire-desc">透過12個問題評估您的飲食習慣和行為模式，幫助您了解飲食健康狀況並提供改善建議</p>
+                
+                <div class="question-group">
+                    <p><strong>1.</strong> 我會按時吃三餐</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q1" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q1" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q1" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q1" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>2.</strong> 我會避免甜食或零食</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q2" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q2" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q2" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q2" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>3.</strong> 我每一口都會咀嚼至少20下</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q3" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q3" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q3" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q3" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>4.</strong> 我會喝白開水而不是含糖飲料</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q4" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q4" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q4" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q4" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>5.</strong> 我會選擇低脂或脫脂的乳製品</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q5" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q5" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q5" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q5" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>6.</strong> 我會多吃蔬菜和水果</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q6" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q6" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q6" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q6" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>7.</strong> 我會限制油炸或高脂肪食物的攝取</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q7" value="0">很少如此</label>
+                        <label><input type="radio" name="eating-q7" value="1">偶爾如此</label>
+                        <label><input type="radio" name="eating-q7" value="2">經常如此</label>
+                        <label><input type="radio" name="eating-q7" value="3">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>8.</strong> 我會在看電視或使用電腦時吃東西</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q8" value="3">很少如此</label>
+                        <label><input type="radio" name="eating-q8" value="2">偶爾如此</label>
+                        <label><input type="radio" name="eating-q8" value="1">經常如此</label>
+                        <label><input type="radio" name="eating-q8" value="0">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>9.</strong> 我會因為情緒低落而吃東西</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q9" value="3">很少如此</label>
+                        <label><input type="radio" name="eating-q9" value="2">偶爾如此</label>
+                        <label><input type="radio" name="eating-q9" value="1">經常如此</label>
+                        <label><input type="radio" name="eating-q9" value="0">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>10.</strong> 我會吃得很快，很少細嚼慢嚥</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q10" value="3">很少如此</label>
+                        <label><input type="radio" name="eating-q10" value="2">偶爾如此</label>
+                        <label><input type="radio" name="eating-q10" value="1">經常如此</label>
+                        <label><input type="radio" name="eating-q10" value="0">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>11.</strong> 我會經常吃宵夜</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q11" value="3">很少如此</label>
+                        <label><input type="radio" name="eating-q11" value="2">偶爾如此</label>
+                        <label><input type="radio" name="eating-q11" value="1">經常如此</label>
+                        <label><input type="radio" name="eating-q11" value="0">總是如此</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>12.</strong> 我會在非用餐時間吃東西</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="eating-q12" value="3">很少如此</label>
+                        <label><input type="radio" name="eating-q12" value="2">偶爾如此</label>
+                        <label><input type="radio" name="eating-q12" value="1">經常如此</label>
+                        <label><input type="radio" name="eating-q12" value="0">總是如此</label>
+                    </div>
+                </div>
+
+                <button onclick="calculateEating()">評估飲食行為</button>
+                <div class="result" id="eating-result"></div>
+
+                <div class="info-section">
+                    <h4>飲食行為測量表詳細說明</h4>
+                    <p><strong>發展背景</strong>本量表由衛生福利部國民健康署開發，用於職場健康促進指引，是評估個人飲食習慣和行為模式的標準化工具</p>
+                    
+                    <p><strong>評估內容領域</strong></p>
+                    <ul>
+                        <li><strong>用餐規律性</strong>按時用餐、避免宵夜、控制非正餐時間進食</li>
+                        <li><strong>食物選擇</strong>健康食材選擇、避免高糖高脂食物、增加蔬果攝取</li>
+                        <li><strong>進食行為</strong>咀嚼習慣、進食速度、專心用餐</li>
+                        <li><strong>情緒飲食</strong>情緒性進食、壓力性進食控制</li>
+                        <li><strong>飲品選擇</strong>水分攝取習慣、避免含糖飲料</li>
+                        <li><strong>營養均衡</strong>乳製品選擇、油脂控制、營養密度考量</li>
+                    </ul>
+                    
+                    <p><strong>計分方式與結果解釋</strong></p>
+                    <ul>
+                        <li><strong>題目1-7</strong>正向計分：總是如此(3分)、經常如此(2分)、偶爾如此(1分)、很少如此(0分)</li>
+                        <li><strong>題目8-12</strong>反向計分：很少如此(3分)、偶爾如此(2分)、經常如此(1分)、總是如此(0分)</li>
+                        <li><strong>總分範圍</strong>0-36分，分數越高表示飲食行為越健康</li>
+                    </ul>
+                    
+                    <p><strong>飲食行為評估標準</strong></p>
+                    <ul>
+                        <li><strong>0-12分 (不良)</strong>飲食行為需要大幅改善，建議積極調整飲食習慣</li>
+                        <li><strong>13-20分 (待改善)</strong>飲食習慣略有不足，需要持續努力改善</li>
+                        <li><strong>21-30分 (良好)</strong>飲食行為大致良好，繼續改善小缺點即可</li>
+                        <li><strong>31-36分 (優秀)</strong>飲食習慣非常健康，請繼續保持</li>
+                    </ul>
+                    
+                    <p><strong>健康飲食的重要性</strong></p>
+                    <ul>
+                        <li><strong>疾病預防</strong>降低肥胖、糖尿病、心血管疾病、癌症等慢性病風險</li>
+                        <li><strong>體重管理</strong>維持健康體重，預防代謝症候群</li>
+                        <li><strong>營養均衡</strong>確保身體獲得必需的營養素和能量</li>
+                        <li><strong>消化健康</strong>促進腸胃道健康，維持正常消化功能</li>
+                        <li><strong>心理健康</strong>穩定血糖，改善情緒和認知功能</li>
+                    </ul>
+                    
+                    <p><strong>飲食行為改善策略</strong></p>
+                    <ul>
+                        <li><strong>規律用餐</strong>固定三餐時間，避免暴飲暴食或跳餐</li>
+                        <li><strong>慢食原則</strong>每口咀嚼20-30次，用餐時間至少20分鐘</li>
+                        <li><strong>食物選擇</strong>多選擇原型食物，減少加工食品攝取</li>
+                        <li><strong>份量控制</strong>使用小盤子、學習適當份量、避免吃到撐</li>
+                        <li><strong>水分補充</strong>每日2000-2500cc白開水，減少含糖飲料</li>
+                        <li><strong>情緒管理</strong>識別情緒性進食，發展替代性紓壓方式</li>
+                    </ul>
+                    
+                    <p><strong>我的餐盤健康飲食指引</strong></p>
+                    <ul>
+                        <li><strong>全穀雜糧類</strong>每餐約1.5-4碗，選擇未精製穀類</li>
+                        <li><strong>豆魚蛋肉類</strong>每餐1-2份手掌大小，優選植物性蛋白</li>
+                        <li><strong>蔬菜類</strong>每餐1-2份拳頭大小，多樣化顏色搭配</li>
+                        <li><strong>水果類</strong>每日2-4份拳頭大小，原型水果優於果汁</li>
+                        <li><strong>乳品類</strong>每日1.5-2杯，選擇低脂或脫脂產品</li>
+                        <li><strong>油脂與堅果種子類</strong>每日油脂3-7茶匙，堅果1份湯匙量</li>
+                    </ul>
+                    
+                    <p><strong>職場健康飲食建議</strong></p>
+                    <ul>
+                        <li><strong>辦公室準備</strong>備妥健康零食(堅果、水果)，避免餓昏頭亂吃</li>
+                        <li><strong>外食技巧</strong>選擇均衡便當，少油少鹽，增加蔬菜份量</li>
+                        <li><strong>會議餐點</strong>選擇輕食、避免高熱量甜點和含糖飲料</li>
+                        <li><strong>加班飲食</strong>準備健康輕食，避免深夜高熱量食物</li>
+                        <li><strong>聚餐應對</strong>適量飲酒、多選蔬菜、控制總熱量攝取</li>
+                    </ul>
+                    
+                    <p><strong>注意事項</strong>本量表為自我評估工具，不能取代專業營養諮詢。如有特殊營養需求或慢性疾病，建議諮詢營養師或醫療專業人員制定個人化飲食計畫</p>
+                    
+                    <p><em>資料來源：衛生福利部國民健康署職場健康促進指引、我的餐盤飲食指南</em></p>
+                </div>
+            </div>
+
+            <!-- FRAX骨折風險評估工具 -->
+            <div class="questionnaire-form" id="frax-form">
+                <h3>FRAX 骨折風險評估工具</h3>
+                <p class="questionnaire-desc">FRAX是世界衛生組織開發的10年骨折風險評估工具，可以評估您未來10年發生主要骨質疏鬆性骨折的機率</p>
+                
+                <div class="input-group">
+                    <label for="frax-age">年齡</label>
+                    <input type="number" id="frax-age" min="40" max="90" placeholder="40-90歲">
+                    <small>適用於40-90歲</small>
+                </div>
+
+                <div class="input-group">
+                    <label>性別</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-gender" value="female">女性</label>
+                        <label><input type="radio" name="frax-gender" value="male">男性</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="frax-weight">體重 (kg)</label>
+                    <input type="number" id="frax-weight" min="25" max="125" step="0.1" placeholder="例如：60">
+                </div>
+
+                <div class="input-group">
+                    <label for="frax-height">身高 (cm)</label>
+                    <input type="number" id="frax-height" min="100" max="230" step="0.1" placeholder="例如：160">
+                </div>
+
+                <div class="question-group">
+                    <p><strong>骨折病史</strong> 您成年後是否曾經因輕微外傷或自發性骨折？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-fracture" value="yes">是</label>
+                        <label><input type="radio" name="frax-fracture" value="no">否</label>
+                    </div>
+                    <small>包括脊椎骨、手腕、肩膀、肱骨、踝骨等骨折</small>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>父母髖骨骨折史</strong> 您的父母任一方是否曾經發生髖骨骨折？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-parent" value="yes">是</label>
+                        <label><input type="radio" name="frax-parent" value="no">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>目前吸菸</strong> 您目前是否吸菸？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-smoking" value="yes">是</label>
+                        <label><input type="radio" name="frax-smoking" value="no">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>糖皮質類固醇使用</strong> 您目前或過去是否曾長期使用糖皮質類固醇？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-steroid" value="yes">是</label>
+                        <label><input type="radio" name="frax-steroid" value="no">否</label>
+                    </div>
+                    <small>每日服用相當於5mg以上的prednisolone連續3個月以上</small>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>類風濕性關節炎</strong> 您是否曾被診斷為類風濕性關節炎？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-ra" value="yes">是</label>
+                        <label><input type="radio" name="frax-ra" value="no">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>繼發性骨質疏鬆症</strong> 您是否患有以下疾病？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-secondary" value="yes">是</label>
+                        <label><input type="radio" name="frax-secondary" value="no">否</label>
+                    </div>
+                    <small>包括：第一型糖尿病、甲狀腺功能亢進、原發性副甲狀腺功能亢進、克林氏症、吸收不良等</small>
+                </div>
+
+                <div class="question-group">
+                    <p><strong>飲酒習慣</strong> 您每日的飲酒量是否相當於3個酒精單位以上？</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="frax-alcohol" value="yes">是</label>
+                        <label><input type="radio" name="frax-alcohol" value="no">否</label>
+                    </div>
+                    <small>1個酒精單位 = 8-10g純酒精（約為一杯葡萄酒或一杯啤酒）</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="frax-bmd">骨密度 (BMD) - 可選</label>
+                    <input type="number" id="frax-bmd" step="0.001">
+                    <small>如有DEXA檢查結果，請填入股骨頸(femoral neck)T-score值</small>
+                </div>
+
+                <button onclick="calculateFRAX()">計算FRAX骨折風險</button>
+                <div class="result" id="frax-result"></div>
+
+                <div class="info-section">
+                    <h4>FRAX 骨折風險評估工具詳細說明</h4>
+                    <p><strong>發展背景</strong>FRAX由英國雪菲爾德大學WHO合作中心開發，是目前國際上最廣泛使用的骨折風險評估工具</p>
+                    
+                    <p><strong>評估原理</strong></p>
+                    <ul>
+                        <li><strong>多因子分析</strong>結合12個主要風險因子進行綜合評估</li>
+                        <li><strong>機率計算</strong>提供10年內發生主要骨質疏鬆性骨折的機率百分比</li>
+                        <li><strong>個人化評估</strong>考量性別、年齡、種族等個人特質</li>
+                        <li><strong>國家特異性</strong>根據不同國家的流行病學資料調整</li>
+                    </ul>
+                    
+                    <p><strong>主要風險因子</strong></p>
+                    <ul>
+                        <li><strong>不可改變因子</strong>年齡、性別、骨折病史、家族史、種族</li>
+                        <li><strong>可改變因子</strong>体重、吸菸、飲酒、藥物使用</li>
+                        <li><strong>疾病因子</strong>類風濕性關節炎、繼發性骨質疏鬆症</li>
+                        <li><strong>骨密度</strong>餗股頸部位BMD測定結果</li>
+                    </ul>
+                    
+                    <p><strong>骨折風險分級與建議</strong></p>
+                    <ul>
+                        <li><strong>低風險 (<10%)</strong>正常骨質保養，定期追蹤檢查</li>
+                        <li><strong>中等風險 (10-20%)</strong>加強骨質保養，考慮預防性治療</li>
+                        <li><strong>高風險 (>20%)</strong>建議藥物治療，定期追蹤</li>
+                    </ul>
+                    
+                    <p><strong>骨質疏鬆症的健康影響</strong></p>
+                    <ul>
+                        <li><strong>骨折風險</strong>增加髎骨、脊椎、手腕、肩膎等部位骨折風險</li>
+                        <li><strong>生涻品質</strong>骨折後可能導致行動不便、疼痛、失能</li>
+                        <li><strong>死亡率</strong>髎骨骨折後一年內死亡率可達至20%</li>
+                        <li><strong>醫療費用</strong>骨折相關的醫療和照護費用龐巨</li>
+                    </ul>
+                    
+                    <p><strong>骨質健康的維護策略</strong></p>
+                    <ul>
+                        <li><strong>物理運動</strong>承重運動、阻力訓練、平衡訓練</li>
+                        <li><strong>營養支持</strong>適當鈩質攝取(1000-1200mg/日)、維生素D(800-1000IU/日)</li>
+                        <li><strong>生涻方式</strong>戒菸、限酒、避免跌倒、充足日照</li>
+                        <li><strong>藥物治療</strong>雌激素、双磷酸鹽類、選擇性雌激素受體調節劑</li>
+                    </ul>
+                    
+                    <p><strong>定期篩檢建議</strong></p>
+                    <ul>
+                        <li><strong>停經後婦女</strong>65歲以上或停經後具風險因子者建議進行DEXA檢查</li>
+                        <li><strong>男性</strong>70歲以上或具風險因子者建議進行DEXA檢查</li>
+                        <li><strong>追蹤頁率</strong>正常者5年一次，高風險者1-2年一次</li>
+                        <li><strong>其他檢查</strong>血清鈩、磷、畢性磷酶、甲狀腺功能等</li>
+                    </ul>
+                    
+                    <p><strong>注意事項與限制</strong></p>
+                    <ul>
+                        <li>FRAX僅適用於40歲以上未接受骨質疏鬆症治療的成人</li>
+                        <li>結果僅為參考，不能取代專業醫師的診斷與建議</li>
+                        <li>如有骨折病史或高風險因子，建議諮詢骨科或內分泌科醫師</li>
+                        <li>骨密度檢查有助於提高評估的精確度</li>
+                    </ul>
+                    
+                    <p><em>資料來源：世界衛生組織WHO、台灣骨質疏鬆症學會、中華民國骨質疏鬆症學會、台灣FRAX模型參數</em></p>
                 </div>
             </div>
         </div>

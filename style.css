@@ -275,6 +275,298 @@ button:active {
     box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
 }
 
+/* 壓力指數相關樣式 */
+.stress-low {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    color: white;
+}
+
+.stress-medium {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.stress-high {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+}
+
+.stress-severe {
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+    color: white;
+}
+
+.symptom-areas {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #ff9800;
+}
+
+.symptom-areas h4 {
+    color: #e65100;
+    margin-bottom: 10px;
+}
+
+.symptom-areas ul {
+    margin-left: 20px;
+}
+
+.symptom-areas li {
+    margin-bottom: 5px;
+    color: #bf360c;
+}
+
+.stress-tips {
+    display: grid;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.tip-category {
+    background: #f3e5f5;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #9c27b0;
+}
+
+.tip-category strong {
+    color: #6a1b9a;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.tip-category ul {
+    margin-left: 20px;
+}
+
+.tip-category li {
+    margin-bottom: 5px;
+    color: #4a148c;
+}
+
+.warning-note {
+    background: #ffebee;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #f44336;
+}
+
+.warning-note h4 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+.warning-note p {
+    color: #b71c1c;
+    margin-bottom: 10px;
+}
+
+.warning-note ul {
+    margin-left: 20px;
+}
+
+.warning-note li {
+    margin-bottom: 5px;
+    color: #b71c1c;
+    font-weight: 500;
+}
+
+/* 飲食行為相關樣式 */
+.eating-poor {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+}
+
+.eating-fair {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.eating-good {
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+    color: white;
+}
+
+.eating-excellent {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    color: white;
+}
+
+.problem-areas {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #ff9800;
+}
+
+.problem-areas h4 {
+    color: #e65100;
+    margin-bottom: 10px;
+}
+
+.problem-areas ul {
+    margin-left: 20px;
+}
+
+.problem-areas li {
+    margin-bottom: 5px;
+    color: #bf360c;
+}
+
+.eating-tips {
+    display: grid;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.nutrition-note {
+    background: #e8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #4caf50;
+}
+
+.nutrition-note h4 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.nutrition-note p {
+    color: #1b5e20;
+    margin-bottom: 8px;
+}
+
+/* FRAX骨折風險相關樣式 */
+.frax-low {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    color: white;
+}
+
+.frax-medium {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.frax-high {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+}
+
+.frax-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.frax-scores .score-display {
+    background: #f5f5f5;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.frax-scores .score-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.frax-scores .score-label {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.3;
+}
+
+.risk-factors {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #ff9800;
+}
+
+.risk-factors h4 {
+    color: #e65100;
+    margin-bottom: 10px;
+}
+
+.risk-factors ul {
+    margin-left: 20px;
+}
+
+.risk-factors li {
+    margin-bottom: 5px;
+    color: #bf360c;
+}
+
+.bone-tips {
+    display: grid;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.medical-note {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #2196f3;
+}
+
+.medical-note h4 {
+    color: #1565c0;
+    margin-bottom: 10px;
+}
+
+.medical-note p {
+    color: #0d47a1;
+    margin-bottom: 8px;
+}
+
+.risk-interpretation {
+    background: #f3e5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #9c27b0;
+}
+
+.risk-interpretation h4 {
+    color: #6a1b9a;
+    margin-bottom: 10px;
+}
+
+.risk-interpretation p {
+    color: #4a148c;
+    margin-bottom: 8px;
+}
+
+.treatment-indication {
+    background: #ffebee;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #f44336;
+    font-weight: bold;
+    color: #c62828 !important;
+}
+
+.prevention-focus {
+    background: #e8f5e8;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #4caf50;
+    font-weight: bold;
+    color: #2e7d32 !important;
+}
+
 footer {
     text-align: center;
     padding: 20px 0;
